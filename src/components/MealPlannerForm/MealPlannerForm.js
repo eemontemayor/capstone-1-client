@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Button, Input } from '../Utils/Utils';
 
-export default class MealBrowserForm extends Component{
+export default class MealPlannerForm extends Component{
     
     render(){
         return(
@@ -13,3 +13,6 @@ export default class MealBrowserForm extends Component{
         )
     }
 }
+// renders a calendar component
+// button to adjust calendar length
+// click on a day to add a meal - > leads to addMeal Comp
