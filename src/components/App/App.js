@@ -1,11 +1,14 @@
 
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom';
+import Header from '../Header/Header';
 import PrivateRoute from '../Utils/PrivateRoute';
 import PublicOnlyRoute from '../Utils/PublicOnlyRoute';
 import LoginPage from '../../routes/LoginPage';
 import RegistrationPage from '../../routes/RegistrationPage';
 import HomePage from '../../routes/HomePage';
+import MealBrowserPage from '../../routes/MealBrowserPage';
+import MealPlannerPage from '../../routes/MealPlannerPage';
 
 class App extends Component {
   state = { hasError: false }
@@ -19,7 +22,7 @@ class App extends Component {
     return (
       <div className='App'>
         <header className='App__header'>
-          {/* <Header /> */}
+          <Header />
         </header>
         <main className='App__main'>
           {this.state.hasError && <p className='red'>There was an error! Oh no!</p>}
@@ -38,6 +41,14 @@ class App extends Component {
               component={RegistrationPage}
             />
            
+           <PrivateRoute
+              path={'/mealBrowser'}
+              component={MealBrowserPage}
+            />
+             <PrivateRoute
+              path={'/mealPlanner'}
+              component={MealPlannerPage}
+            />
            
           </Switch>
         </main>

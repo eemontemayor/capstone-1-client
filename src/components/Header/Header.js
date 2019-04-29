@@ -41,18 +41,18 @@ export default class Header extends Component {
       <nav className='Header'>
         <h1>
           <Link to='/'>
-            {/* <FontAwesomeIcon className='blue' icon='gift' />
-            {' '} */}
+            <FontAwesomeIcon className='blue' icon='gift' />
+            {' '}
             The Meal Deal
           </Link>
         </h1>
-        <span className='Header__tagline--wide'>Placeholder</span>
+        <span className='Header__tagline--wide'>Placeholdere</span>
         {TokenService.hasAuthToken()
           ? this.renderLogoutLink()
           : this.renderLoginLink()}
       </nav>
 
-      <span className='Header__tagline--narrow'>Placeholder</span>
+      <span className='Header__tagline--narrow'>Placeholderss</span>
     </>;
   }
 }
