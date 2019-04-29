@@ -1,22 +1,16 @@
 import React, {Component} from 'react';
 import { Button, Input } from '../Utils/Utils';
-// import Calendar from '../Calendar/Calendar.js'
-import Calendar from 'react-calendar';
+import Calendar from '../Calendar/Calendar.js'
+// import Calendar from 'react-calendar';
 
 
 export default class MealPlannerForm extends Component{
-    state = {
-        date: new Date(),
-      }
-     
-      onChange = date => this.setState({ date })
    
   render() {
     return (
       <div>
         <Calendar
-          onChange={this.onChange}
-          value={this.state.date}
+     
         />
       </div>
     );
