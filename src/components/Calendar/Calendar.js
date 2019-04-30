@@ -65,7 +65,8 @@ class Calendar extends React.Component {
         formattedDate = dateFns.format(day, dateFormat);
         const cloneDay = day; 
         days.push(
-          <div
+          <Link
+           // to='' add path to AddMealPage here
             className={`col cell ${
               !dateFns.isSameMonth(day, monthStart) // if it is not the case that this day is in the same month then disable clicks on it
                 ? "disabled"
@@ -76,7 +77,7 @@ class Calendar extends React.Component {
           >
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
-          </div>
+          </Link>
           
         );
         day = dateFns.addDays(day, 1);
