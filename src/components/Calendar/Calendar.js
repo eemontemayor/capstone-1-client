@@ -52,23 +52,23 @@ class Calendar extends React.Component {
     const { currentDay, currentMonth, selectedDate, calendarLength } = this.state;
     const monthStart = dateFns.startOfMonth(currentMonth);
     const monthEnd = dateFns.endOfMonth(monthStart);
-    const dayStart = dateFns.endOfYesterday(currentDay);
+    // const dayStart = dateFns.endOfYesterday(currentDay);
 
     const startDate = dateFns.startOfWeek(monthStart);//show days from the previous month that complete the starting week
-    const endDate = dateFns.endOfWeek(monthEnd);//show days from next month that end the last week of selected month
-                                                  // executed with while loop below
+    // const endDate = dateFns.endOfWeek(monthEnd);//show days from next month that end the last week of selected month
+    const endDate = dateFns.addMonths(monthEnd, 1);                                                  // executed with while loop below
 
-    
+    //********TODO trying to customize calendar so that if a calendar length is selected then different functionality is implemented */
 
     const dateFormat = "D";
     const rows = [];
     
 
     let days = [];
-    // let day = startDate;
-    let day= dayStart;
+    let day = startDate; // renders all the days in the month
+    // **let day= dayStart; // renders days in current week
     let formattedDate = "";
-    
+   
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
         formattedDate = dateFns.format(day, dateFormat);
@@ -77,8 +77,10 @@ class Calendar extends React.Component {
           <Link
            to={`addMeal/:${day}`} 
             className={`col cell ${ 
-                calendarLength && dateFns.isPast(day) // if it is not the case that this day is in the same month and calendarLength is on then disable clicks on it
-                ? "disabled"
+              // !dateFns.isSameMonth(day, monthStart)   // if it is not the case that this day is in the same month and calendarLength is on then disable clicks on it
+              dateFns.isPast(day)
+                ? "disabled" 
+              
                 : dateFns.isSameDay(day, selectedDate) ? "selected" : "" // else if day is the same day as selected Date in our state then add classname selected
             }`}                                                         // else add an empty string
             key={day}
@@ -125,7 +127,7 @@ class Calendar extends React.Component {
     const {currentDay}= this.state;
     const endDate = dateFns.addWeeks(currentDay, e.target.value)
     this.setState({
-      calendarLength: dateFns.differenceInCalendarDays(currentDay, endDate)
+      calendarLength: endDate
     });
   }
 
