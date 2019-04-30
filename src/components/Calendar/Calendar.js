@@ -5,9 +5,10 @@ import {Route, Link} from 'react-router-dom';
 
 class Calendar extends React.Component {
   state = {
+    currentDay: new Date(),
     currentMonth: new Date(),
     selectedDate: new Date(),
-    calendarLength: '',
+    calendarLength: new Date(),
   };
 
   renderHeader() { 
@@ -48,18 +49,24 @@ class Calendar extends React.Component {
   }
 
   renderCells() { // renders cells for each day of the week
-    const { currentMonth, selectedDate, calendarLength } = this.state;
+    const { currentDay, currentMonth, selectedDate, calendarLength } = this.state;
     const monthStart = dateFns.startOfMonth(currentMonth);
     const monthEnd = dateFns.endOfMonth(monthStart);
+    const dayStart = dateFns.endOfYesterday(currentDay);
+
     const startDate = dateFns.startOfWeek(monthStart);//show days from the previous month that complete the starting week
     const endDate = dateFns.endOfWeek(monthEnd);//show days from next month that end the last week of selected month
-    // executed with while loop below
+                                                  // executed with while loop below
+
+    
+
     const dateFormat = "D";
     const rows = [];
     
 
     let days = [];
-    let day = startDate;
+    // let day = startDate;
+    let day= dayStart;
     let formattedDate = "";
     
     while (day <= endDate) {
@@ -115,8 +122,10 @@ class Calendar extends React.Component {
 
   handleChange = (e) => {
     console.log(e.target.value)
+    const {currentDay}= this.state;
+    const endDate = dateFns.addWeeks(currentDay, e.target.value)
     this.setState({
-      calendarLength: e.target.value
+      calendarLength: dateFns.differenceInCalendarDays(currentDay, endDate)
     });
   }
 
