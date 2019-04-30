@@ -100,21 +100,19 @@ class Calendar extends React.Component {
     });
   };
 
-  nextMonth = () => {
-    this.setState({
-      currentMonth: dateFns.addMonths(this.state.currentMonth, 1)
-    });
-  };
+  // nextMonth = () => {
+  //   this.setState({
+  //     currentMonth: dateFns.addMonths(this.state.currentMonth, 1)
+  //   });
+  // };
 
-  prevMonth = () => {
-    this.setState({
-      currentMonth: dateFns.subMonths(this.state.currentMonth, 1)
-    });
-  };
+  // prevMonth = () => {
+  //   this.setState({
+  //     currentMonth: dateFns.subMonths(this.state.currentMonth, 1)
+  //   });
+  // };
 
   handleChange = (e) => {
-    console.log(typeof e.target.value)
-  
     this.setState({
       calendarLength: parseInt(e.target.value)
     });
@@ -145,7 +143,8 @@ class Calendar extends React.Component {
 
 export default Calendar;
 
-//make each day a link to add meal page
-// customize calendar with size adjustor 
-// customize calendar to only show present and future weeks
+
+
+
+// Days are not adjusting if i happen to switch months
 

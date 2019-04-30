@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import AddMealForm from '../components/AddMealForm/AddMealForm';
-import { Button, Input } from '../components/Utils/Utils';
 
 export default class AddMealPage extends Component{
     render(){
