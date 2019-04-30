@@ -9,6 +9,8 @@ import RegistrationPage from '../../routes/RegistrationPage';
 import HomePage from '../../routes/HomePage';
 import MealBrowserPage from '../../routes/MealBrowserPage';
 import MealPlannerPage from '../../routes/MealPlannerPage';
+import AddMealPage from '../../routes/AddMealPage';
+
 
 class App extends Component {
   state = { hasError: false }
@@ -49,7 +51,7 @@ class App extends Component {
               path={'/mealPlanner'}
               component={MealPlannerPage}
             />
-           
+            <Route path= '/addMeal/:day' component= {AddMealPage}/>
           </Switch>
         </main>
       </div>

@@ -1,7 +1,8 @@
 import React from "react";
 import dateFns from "date-fns";
 import './Calendar.css';
-import {Route, Link} from 'react-router-dom';
+import { Link} from 'react-router-dom';
+
 
 class Calendar extends React.Component {
   state = {
@@ -49,24 +50,15 @@ class Calendar extends React.Component {
   }
 
   renderCells() { // renders cells for each day of the week
-    const { currentDay, currentMonth, selectedDate, calendarLength } = this.state;
-    const monthStart = dateFns.startOfMonth(currentMonth);
-    const monthEnd = dateFns.endOfMonth(monthStart);
-    // const dayStart = dateFns.endOfYesterday(currentDay);
-
-    const startDate = dateFns.startOfWeek(monthStart);//show days from the previous month that complete the starting week
-    // const endDate = dateFns.endOfWeek(monthEnd);//show days from next month that end the last week of selected month
-    const endDate = dateFns.addMonths(monthEnd, 1);                                                  // executed with while loop below
-
-    //********TODO trying to customize calendar so that if a calendar length is selected then different functionality is implemented */
-
+    const { currentDay, selectedDate, calendarLength } = this.state;
+    const weekEnd= dateFns.endOfWeek(currentDay)
+    const dayStart = dateFns.endOfYesterday(currentDay);
+    const endDate = dateFns.addWeeks(weekEnd, calendarLength-1)
     const dateFormat = "D";
     const rows = [];
     
-
     let days = [];
-    let day = startDate; // renders all the days in the month
-    // **let day= dayStart; // renders days in current week
+    let day= dayStart; // renders days in current week
     let formattedDate = "";
    
     while (day <= endDate) {
@@ -75,14 +67,12 @@ class Calendar extends React.Component {
         const cloneDay = day; 
         days.push(
           <Link
-           to={`addMeal/:${day}`} 
+           to={`/addMeal/${day}`} 
             className={`col cell ${ 
-              // !dateFns.isSameMonth(day, monthStart)   // if it is not the case that this day is in the same month and calendarLength is on then disable clicks on it
               dateFns.isPast(day)
                 ? "disabled" 
-              
-                : dateFns.isSameDay(day, selectedDate) ? "selected" : "" // else if day is the same day as selected Date in our state then add classname selected
-            }`}                                                         // else add an empty string
+                : dateFns.isSameDay(day, selectedDate) ? "selected" : "" // else if day is the same day as selected Date in our state then add classname selected else add an empty string
+            }`}                                                          
             key={day}
             onClick={() => this.onDateClick(dateFns.parse(cloneDay))}// clondDay needed because otherwise onClick will always take endDate as clicked value since that's the value of day when loop ends (because we defined day in outer scope)
           >
@@ -100,7 +90,7 @@ class Calendar extends React.Component {
       );
       days = [];
     }
-    return <div className="body">{rows}</div>; //render the cells
+    return <div className="body">{rows}</div>; //render the rows
   }
 
   //================= Event handlers for click events===================//
@@ -123,11 +113,10 @@ class Calendar extends React.Component {
   };
 
   handleChange = (e) => {
-    console.log(e.target.value)
-    const {currentDay}= this.state;
-    const endDate = dateFns.addWeeks(currentDay, e.target.value)
+    console.log(typeof e.target.value)
+  
     this.setState({
-      calendarLength: endDate
+      calendarLength: parseInt(e.target.value)
     });
   }
 
@@ -135,8 +124,8 @@ class Calendar extends React.Component {
     return (
     <div>
       <p>How long do you want to plan for?</p>
-      <select name="calendarLength" required onChange={this.handleChange}> 
-        <option value= "null" >...</option>
+      <select name="calendarLength" required onChange={this.handleChange.bind(this)}> 
+        <option value = "null">...</option>
         <option value= "1">1 week</option>
         <option value="2">2 weeks</option>
         <option value="3">3 weeks</option>
@@ -148,7 +137,7 @@ class Calendar extends React.Component {
          {this.renderDays()}
         {this.renderCells()} 
       </div>
-      <Route path= '/addMeal/:dayId'/>
+  
     </div>
     );
   }
@@ -156,7 +145,7 @@ class Calendar extends React.Component {
 
 export default Calendar;
 
-//make each day a link to add meal page/form which also contains a browser, history, bookmarks components
+//make each day a link to add meal page
 // customize calendar with size adjustor 
 // customize calendar to only show present and future weeks
 
