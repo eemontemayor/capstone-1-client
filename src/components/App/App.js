@@ -51,7 +51,9 @@ class App extends Component {
               path={'/mealPlanner'}
               component={MealPlannerPage}
             />
-            <Route path= '/addMeal/:day' component= {AddMealPage}/>
+            <Route 
+            path= '/addMeal/:day' 
+            component= {AddMealPage}/>
           </Switch>
         </main>
       </div>

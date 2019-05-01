@@ -1,54 +1,41 @@
 import React, {Component} from 'react';
 import { Button, Input, Section } from '../Utils/Utils';
 import MealApiService from '../../services/meal-api-service';
+import MealBrowserResults from '../MealBrowserResults/MealBrowserResults';
 
 export default class MealBrowserForm extends Component{
     state={
         searchTerm:'',
-        searchResuts:[],
+        searchResults:[],
     }
 
 
-    renderResults(...x){
-        
-        
-        let results= x[0].map(i => { 
-            let name = i.recipe.label
-            return `<h4>${name}</h4>`
-          })
-        let htmlString= results.map(i => {
-            return `<div>${i}</div>`
-        })
-        return(
-           
-           console.log(htmlString) 
+ 
+handleSubmit = e => {
+  e.preventDefault()
+
+  MealApiService.getMeals(this.state.searchTerm)
+    .then(res => {
+      this.setState({
+          searchResults: res.hits
          
-        )
-    }
+        },()=>{
+          console.log(this.state.searchResults)
+        }
+      )
+    })
+}
 
 
-    handleSubmit = e => {
-        e.preventDefault()
-        this.setState({
-           
-        })
-        console.log(this.state.searchTerm)
-
-        MealApiService.getMeals(this.state.searchTerm)
-        .then(res =>{
-            
-            this.renderResults(res.hits)
-            
-             
-        })
-        
-    }
     handleChange = (e) => {
         this.setState({
           searchTerm: e.target.value
         });
       }
+
+
     render(){
+      const {searchResults, searchTerm} = this.state
         return(
             <div>
             <form onSubmit={this.handleSubmit}
@@ -91,7 +78,7 @@ export default class MealBrowserForm extends Component{
             </Button>
           </form>
           
-               {/* PLACEHOLDER FOR COMPONENT THAT RENDERS RESULTS */}
+            <MealBrowserResults results={searchResults} />
           
         
             </div>
