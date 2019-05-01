@@ -1,10 +1,22 @@
 import React, {Component} from 'react';
 import AddMealForm from '../components/AddMealForm/AddMealForm';
+import MealBrowserForm from '../components/MealBrowserForm/MealBrowserForm';
+
 
 export default class AddMealPage extends Component{
     render(){
         return(
-            <div><AddMealForm/></div>
+            <div><AddMealForm/>
+            <button>
+                Browse Meal for Ideas
+            </button>
+            <button>
+              View Meal History
+            </button>
+            <button>
+                View Meal Bookmarks
+            </button>
+           </div>
         )
     }
 }

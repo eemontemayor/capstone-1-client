@@ -10,6 +10,7 @@ export default function ResultItem(props){
     return(
         <div className='result-item'>
         <h4>{props.name}</h4>
+        <button>Save to my bookmarks</button><br/>
         <button>View Ingredients</button><br/>
         <button>View Instructions</button><br/>
         <img src={props.pic} alt='x'/>
