@@ -19,7 +19,11 @@ class App extends Component {
     console.error(error);
     return { hasError: true };
   }
+  componentDidMount(){
+//placeholder to fetch userinfo from database (ie calendar)?
+  }
 
+//place holder for add Meal function which makes a crud request to server then database
   render() {
     return (
       <div className='App'>

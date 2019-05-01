@@ -1,0 +1,8 @@
+.result-item{
+    border: 1px #000000 solid;
+   padding: 5px;
+   margin: auto;
+}
+.hidden{
+    display:none;
+}
