@@ -15,8 +15,8 @@ import ApiContext from "../../context/meals-context";
 class App extends Component {
   state = { 
     hasError: false,
-    calendar:[],
-    meals:[],
+    calendar:[], /// this will contain the current calendar and the meals for each day
+    meals:[], /// this will be for the bookmarks and history component
   }
 
   static getDerivedStateFromError(error) {
