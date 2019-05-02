@@ -3,33 +3,48 @@ import { Button, Input, Textarea } from '../Utils/Utils';
 import MealApiService from '../../services/meal-api-service';
 
 export default class AddMealForm extends Component{
-  handleAddMeal=(ev)=>{
+  constructor(props) {
+    super(props);
+    this.state = {
+      meal_name: '',
+      ingredients:'',
+
+    };
+  }
+
+
+  handleAddMeal=(ev)=>{// this belongs in app and should be passed down via context
     ev.preventDefault()
-    const{name, meal_name}= ev.target
-    console.log( meal_name)
-    this.setState({
-      calendarMeals: [{[name]:meal_name}]// SINGLE ENTRY INPUT HANDLER
-    })
+    const {meal_name} = ev.target
   MealApiService.postMeal({
-    meal_name: meal_name.value,
+    meal_name: meal_name.value
   })
-  .then(res => console.log(res))
+  .then(res => console.log('here'))
   
   
   } 
+
+  handleChange = (e) => {
+ 
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
 
     render(){
         return(
             <form
             className='AddMealForm' onSubmit={this.handleAddMeal}>           
-            <div className='mealName'>
+            <div className='meal_name'>
               <label htmlFor='addMealForm_meal_name'>
                 Meal Name
               </label>
               <Input
-                required
+                type="text"
                 name='meal_name'
-                id='addMealForm_meal_name'>
+                onChange={this.handleChange.bind(this)}
+                required
+                >
               </Input>
             </div>
             <div className='dishType'>
@@ -43,7 +58,7 @@ export default class AddMealForm extends Component{
                     <option value="other">Other</option>
                 </select>
               </div>
-                <div className= 'Ingredients'>
+                <div className= 'ingredients'>
                 <label htmlFor='ingredients'>Ingredients
 
                 </label><br/>
@@ -51,7 +66,7 @@ export default class AddMealForm extends Component{
               <Textarea
                 
                 name='ingredients'
-                
+                onChange={this.handleChange.bind(this)}
                 id='addMealForm_ingredients'>
               </Textarea>
                 </div>

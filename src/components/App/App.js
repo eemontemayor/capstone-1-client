@@ -16,23 +16,42 @@ import MealApiService from '../../services/meal-api-service';
 class App extends Component {
   state = { 
     hasError: false,
-    calendarMeals:[{
-      name:'',
-      ingredients:'',
-      onDays:[],
-      saved:false,
-
-    }],
-
+    days:[],
+    meals:[],
   }
 
   static getDerivedStateFromError(error) {
     console.error(error);
     return { hasError: true };
   }
-  componentDidMount(){
-//placeholder to fetch userinfo from database (ie calendar)?
-  }
+  // componentDidMount(){
+  //   Promise.all([
+  //     fetch(`${config.API_ENDPOINT}/api/meals`),// initial fetch for landing page; shows all calendar and all meals
+  //     fetch(`${config.API_ENDPOINT}/api/calendar`)
+  //   ])
+  //     .then(([mealsRes, calendarRes]) => {
+  //       if (!mealsRes.ok)
+  //         return mealsRes.json().then(e => Promise.reject(e))
+  //       if (!calendarRes.ok)
+  //         return calendarRes.json().then(e => Promise.reject(e))
+
+  //       return Promise.all([
+  //         mealsRes.json(),
+  //         calendarRes.json(),
+  //       ])
+  //     })
+  //     .then(([meals, calendar]) => { //(((********)))
+  //       this.setState({ meals, calendar })
+       
+  //     })
+  //     .catch(error => {
+  //       console.error({ error })
+  //     })
+  // }
+  // }
+
+
+
 
 //place holder for add Meal function which makes a crud request to server then database
 // handleAddMeal=(ev)=>{
@@ -47,6 +66,11 @@ class App extends Component {
 // .then(meal => console.log(meal))  
 
 // } 
+
+
+
+
+
 render() {
     return (
       <div className='App'>

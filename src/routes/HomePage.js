@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-import {Button} from '../components/Utils/Utils';
+
 
 
 const BrowserStyle = {
     margin: '50px',
     padding: '20px',
     border: '5px solid pink',
-    "font-size":'30px',
+  
     display:"inline-block",
     
   };
@@ -15,7 +15,7 @@ const BrowserStyle = {
     margin: '40px',
     padding: '20px',
     border: '5px solid yellow',
-    "font-size":'30px',
+    
     display:"inline-block",
   }
   
