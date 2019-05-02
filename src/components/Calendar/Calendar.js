@@ -1,7 +1,8 @@
 import React from "react";
 import dateFns from "date-fns";
 import './Calendar.css';
-import { Link} from 'react-router-dom';
+import { Route, Link} from 'react-router-dom';
+import AddMealPage from '../../routes/AddMealPage'
 
 
 class Calendar extends React.Component {
@@ -59,7 +60,7 @@ class Calendar extends React.Component {
     
     let days = [];
     let day= dayStart; // renders days in current week
-    let formattedDate = "";
+    let formattedDate = ""; //number of date
    
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
@@ -67,7 +68,7 @@ class Calendar extends React.Component {
         const cloneDay = day; 
         days.push(
           <Link
-           to={`/addMeal/${day}`} 
+           to={`/addMeal/${formattedDate}`} //TO-DO  fix dynamic param to reflect date on url
             className={`col cell ${ 
               dateFns.isPast(day)
                 ? "disabled" 
@@ -135,7 +136,7 @@ class Calendar extends React.Component {
          {this.renderDays()}
         {this.renderCells()} 
       </div>
-  
+
     </div>
     );
   }

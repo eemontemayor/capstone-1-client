@@ -11,12 +11,12 @@ import MealBrowserPage from '../../routes/MealBrowserPage';
 import MealPlannerPage from '../../routes/MealPlannerPage';
 import AddMealPage from '../../routes/AddMealPage';
 import MealApiService from '../../services/meal-api-service';
-
+import ApiContext from "../../context/meals-context";
 
 class App extends Component {
   state = { 
     hasError: false,
-    days:[],
+    calendar:[],
     meals:[],
   }
 
@@ -50,29 +50,44 @@ class App extends Component {
   // }
   // }
 
+  
 
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
 
+  addMeal = (meal)=>{
+    this.setState({
+      meals:[
+        ...this.state.meals,
+        meal
+      ]
+    })
+  }
 
-//place holder for add Meal function which makes a crud request to server then database
-// handleAddMeal=(ev)=>{
-//   ev.preventDefault()
-//   const{name, meal_name}= ev.target
-//   this.setState({
-//     calendarMeals: [{[name]:meal_name}]// SINGLE ENTRY INPUT HANDLER
-//   })
-// MealApiService.postMeal({
-//   meal_name: meal_name.value,
-// })
-// .then(meal => console.log(meal))  
-
-// } 
+  addCalendar = (calendar)=>{
+    this.setState({
+      calendar: calendar
+    })
+  }
 
 
 
 
 
 render() {
+  const value={
+    meals:this.state.meals,
+    calendar: this.state.calendar,
+    addCalendar:this.state.addCalendar,
+    addMeal: this.addMeal,
+    handleChange: this.handleChange,
+    handleSubmit: this.handleSubmit,
+  }
     return (
+      <ApiContext.Provider value={value}>
       <div className='App'>
         <header className='App__header'>
           <Header />
@@ -108,6 +123,7 @@ render() {
           </Switch>
         </main>
       </div>
+      </ApiContext.Provider>
     );
   }
 }

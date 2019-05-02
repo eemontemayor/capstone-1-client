@@ -1,40 +1,48 @@
 import React, {Component} from 'react';
 import { Button, Input, Textarea } from '../Utils/Utils';
 import MealApiService from '../../services/meal-api-service';
-
+import ApiContext from '../../context/meals-context';
 export default class AddMealForm extends Component{
   constructor(props) {
     super(props);
     this.state = {
       meal_name: '',
       ingredients:'',
+      on_day:[],
 
     };
   }
+  static contextType = ApiContext
 
 
-  handleAddMeal=(ev)=>{// this belongs in app and should be passed down via context
+  handleSubmit=(ev)=>{// this belongs in app and should be passed down via context or better on addMealComp
     ev.preventDefault()
-    const {meal_name} = ev.target
+    const {meal_name, ingredients, on_day} = ev.target
+    
   MealApiService.postMeal({
-    meal_name: meal_name.value
+    meal_name: meal_name.value,
+    ingredients: ingredients.value
   })
-  .then(res => console.log('here'))
-  
-  
-  } 
-
-  handleChange = (e) => {
- 
-    this.setState({
-      [e.target.name]: e.target.value
-    });
+    .then(res => {
+      if (!res.ok)
+        return res.json().then(e => Promise.reject(e))
+      return res.json()
+    })
+    .then(meal => {
+      this.context.addMeal(meal)
+      this.props.history.push(`/addMeal/${on_day}`)
+    })
   }
 
+ 
+
     render(){
+     
+      const{  handleChange, meals } = this.context
+     
         return(
             <form
-            className='AddMealForm' onSubmit={this.handleAddMeal}>           
+            className='AddMealForm' onSubmit={this.handleSubmit.bind(this)}>           
             <div className='meal_name'>
               <label htmlFor='addMealForm_meal_name'>
                 Meal Name
@@ -42,7 +50,7 @@ export default class AddMealForm extends Component{
               <Input
                 type="text"
                 name='meal_name'
-                onChange={this.handleChange.bind(this)}
+                onChange={handleChange.bind(this)}
                 required
                 >
               </Input>
@@ -66,7 +74,7 @@ export default class AddMealForm extends Component{
               <Textarea
                 
                 name='ingredients'
-                onChange={this.handleChange.bind(this)}
+                onChange={handleChange}
                 id='addMealForm_ingredients'>
               </Textarea>
                 </div>

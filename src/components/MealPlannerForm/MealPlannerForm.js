@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import Calendar from '../Calendar/Calendar.js'
-// import Calendar from 'react-calendar';
+import ApiContext from '../../context/meals-context'
 
 
 export default class MealPlannerForm extends Component{
-   
+      static contextType = ApiContext
   render() {
     return (
       <div>

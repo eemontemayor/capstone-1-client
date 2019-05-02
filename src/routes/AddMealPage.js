@@ -5,12 +5,11 @@ import MealBrowserForm from '../components/MealBrowserForm/MealBrowserForm';
 
 export default class AddMealPage extends Component{
 
-    handleAddMeal= () => {
-
-    }
+ 
 
     render(){
         return(
+
             <div><AddMealForm/>
             <button>
                 Browse Meal for Ideas
