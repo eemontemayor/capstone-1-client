@@ -10,7 +10,7 @@ class Calendar extends React.Component {
     currentDay: new Date(),
     currentMonth: new Date(),
     selectedDate: new Date(),
-    calendarLength: new Date(),
+    // calendarLength: new Date(),
   };
 
   renderHeader() { 
@@ -51,7 +51,8 @@ class Calendar extends React.Component {
   }
 
   renderCells() { // renders cells for each day of the week
-    const { currentDay, selectedDate, calendarLength } = this.state;
+    const { currentDay, selectedDate} = this.state;
+    const calendarLength = this.props.calendarLength;
     const weekEnd= dateFns.endOfWeek(currentDay)
     const dayStart = dateFns.endOfYesterday(currentDay);
     const endDate = dateFns.addWeeks(weekEnd, calendarLength-1)
@@ -113,23 +114,12 @@ class Calendar extends React.Component {
   //   });
   // };
 
-  handleChange = (e) => {
-    this.setState({
-      calendarLength: parseInt(e.target.value)
-    });
-  }
+ 
 
   render() {
     return (
     <div>
-      <p>How long do you want to plan for?</p>
-      <select name="calendarLength" required onChange={this.handleChange.bind(this)}> 
-        <option value = "null">...</option>
-        <option value= "1">1 week</option>
-        <option value="2">2 weeks</option>
-        <option value="3">3 weeks</option>
-        <option value="4">4 weeks</option>
-      </select>
+    
 
       <div className="calendar">
         {this.renderHeader()}

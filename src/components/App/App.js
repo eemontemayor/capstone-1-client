@@ -10,7 +10,6 @@ import HomePage from '../../routes/HomePage';
 import MealBrowserPage from '../../routes/MealBrowserPage';
 import MealPlannerPage from '../../routes/MealPlannerPage';
 import AddMealPage from '../../routes/AddMealPage';
-import MealApiService from '../../services/meal-api-service';
 import ApiContext from "../../context/meals-context";
 
 class App extends Component {
@@ -68,6 +67,7 @@ class App extends Component {
   }
 
   addCalendar = (calendar)=>{
+    console.log('yep')
     this.setState({
       calendar: calendar
     })
@@ -84,7 +84,7 @@ render() {
     addCalendar:this.state.addCalendar,
     addMeal: this.addMeal,
     handleChange: this.handleChange,
-    handleSubmit: this.handleSubmit,
+
   }
     return (
       <ApiContext.Provider value={value}>
