@@ -4,6 +4,11 @@ import MealBrowserForm from '../components/MealBrowserForm/MealBrowserForm';
 
 
 export default class AddMealPage extends Component{
+
+    handleAddMeal= () => {
+
+    }
+
     render(){
         return(
             <div><AddMealForm/>
@@ -25,4 +30,4 @@ export default class AddMealPage extends Component{
 
 // must have a back button
 // must have access to history, bookmark, and browser component
-//
+// make a calendar bar for the top

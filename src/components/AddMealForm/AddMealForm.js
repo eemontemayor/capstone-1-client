@@ -1,11 +1,27 @@
 import React, {Component} from 'react';
 import { Button, Input, Textarea } from '../Utils/Utils';
+import MealApiService from '../../services/meal-api-service';
 
 export default class AddMealForm extends Component{
+  handleAddMeal=(ev)=>{
+    ev.preventDefault()
+    const{name, meal_name}= ev.target
+    console.log( meal_name)
+    this.setState({
+      calendarMeals: [{[name]:meal_name}]// SINGLE ENTRY INPUT HANDLER
+    })
+  MealApiService.postMeal({
+    meal_name: meal_name.value,
+  })
+  .then(res => console.log(res))
+  
+  
+  } 
+
     render(){
         return(
             <form
-            className='AddMealForm'>           
+            className='AddMealForm' onSubmit={this.handleAddMeal}>           
             <div className='mealName'>
               <label htmlFor='addMealForm_meal_name'>
                 Meal Name

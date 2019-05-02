@@ -12,5 +12,17 @@ const MealApiService = {
             : res.json()
         );
     },
+    postMeal(x){
+      return fetch('http://localhost:8000/api/meals',{
+        method: 'POST',
+        headers:{
+          'content-type':'application/json'
+        },
+        body: JSON.stringify(x)
+
+      })
+      .then(res => res.json())
+    }
+
 }
 export default MealApiService;

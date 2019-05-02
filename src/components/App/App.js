@@ -10,10 +10,21 @@ import HomePage from '../../routes/HomePage';
 import MealBrowserPage from '../../routes/MealBrowserPage';
 import MealPlannerPage from '../../routes/MealPlannerPage';
 import AddMealPage from '../../routes/AddMealPage';
+import MealApiService from '../../services/meal-api-service';
 
 
 class App extends Component {
-  state = { hasError: false }
+  state = { 
+    hasError: false,
+    calendarMeals:[{
+      name:'',
+      ingredients:'',
+      onDays:[],
+      saved:false,
+
+    }],
+
+  }
 
   static getDerivedStateFromError(error) {
     console.error(error);
@@ -24,7 +35,19 @@ class App extends Component {
   }
 
 //place holder for add Meal function which makes a crud request to server then database
-  render() {
+// handleAddMeal=(ev)=>{
+//   ev.preventDefault()
+//   const{name, meal_name}= ev.target
+//   this.setState({
+//     calendarMeals: [{[name]:meal_name}]// SINGLE ENTRY INPUT HANDLER
+//   })
+// MealApiService.postMeal({
+//   meal_name: meal_name.value,
+// })
+// .then(meal => console.log(meal))  
+
+// } 
+render() {
     return (
       <div className='App'>
         <header className='App__header'>
