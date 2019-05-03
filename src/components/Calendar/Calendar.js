@@ -1,8 +1,8 @@
 import React from "react";
 import dateFns from "date-fns";
 import './Calendar.css';
-import { Route, Link} from 'react-router-dom';
-import AddMealPage from '../../routes/AddMealPage'
+import { Link} from 'react-router-dom';
+
 
 
 class Calendar extends React.Component {
@@ -52,18 +52,24 @@ class Calendar extends React.Component {
   }
 
   renderCells() { // renders cells for each day of the week
-    const {currentYear, currentMonth, currentDay, selectedDate} = this.state;
-    const calendarLength = this.props.calendarLength;
-    const weekEnd= dateFns.endOfWeek(currentDay)
-    const dayStart = dateFns.endOfYesterday(currentDay);
-    const endDate = dateFns.addWeeks(weekEnd, calendarLength-1)
+    const {currentYear, currentMonth, selectedDate} = this.state;
+    
+    const monthStart = dateFns.startOfMonth(currentMonth);
+    const startDate = dateFns.startOfWeek(monthStart);
+
+    
+    const monthEnd = dateFns.endOfMonth(monthStart);
+
+    
+    const endDate = dateFns.endOfWeek(monthEnd)
+    
     const dayFormat = "DD";
     const monthFormat="MM";
     const yearFormat="YYYY"
     const rows = [];
    
     let days = [];
-    let day= dayStart; 
+    let day= startDate; 
     let month = dateFns.format(currentMonth, monthFormat);
     let year= dateFns.format(currentYear,yearFormat);
     let formattedDate = ""; 
@@ -108,17 +114,17 @@ class Calendar extends React.Component {
     });
   };
 
-  // nextMonth = () => {
-  //   this.setState({
-  //     currentMonth: dateFns.addMonths(this.state.currentMonth, 1)
-  //   });
-  // };
+  nextMonth = () => {
+    this.setState({
+      currentMonth: dateFns.addMonths(this.state.currentMonth, 1)
+    });
+  };
 
-  // prevMonth = () => {
-  //   this.setState({
-  //     currentMonth: dateFns.subMonths(this.state.currentMonth, 1)
-  //   });
-  // };
+  prevMonth = () => {
+    this.setState({
+      currentMonth: dateFns.subMonths(this.state.currentMonth, 1)
+    });
+  };
 
  
 
@@ -139,9 +145,4 @@ class Calendar extends React.Component {
 }
 
 export default Calendar;
-
-
-
-
-// Days are not adjusting if i happen to switch months
 

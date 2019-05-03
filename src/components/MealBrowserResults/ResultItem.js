@@ -4,8 +4,14 @@ import './ResultItem.css';
 import MealApiService from '../../services/meal-api-service';
 
 export default class ResultItem extends Component{
+  constructor(props) {
+
+    super(props);
+    this.state = {hidden: false};
     
 
+  }
+//TO-DO fix toggle class button for ingredients
     handleBookmarkSubmit=(ev)=>{
         ev.preventDefault()
         const {name, ingredients, pic} = this.props
@@ -59,7 +65,12 @@ export default class ResultItem extends Component{
           this.props.history.push(`/addMeal/${date}`)
         })
       }
-
+      toggleClass(){
+        const currentState = this.state.hidden;
+        this.setState({
+          hidden: !currentState
+        });
+      };
 
     render(){
    const{ date}=this.props
@@ -71,12 +82,13 @@ export default class ResultItem extends Component{
         <div className='result-item'>
         <h4>{this.props.name}</h4>
         <button type="submit" onClick={this.handleBookmarkSubmit.bind(this)}>Save to my bookmarks</button><br/>
-        <button>View Ingredients</button><br/>
+        
        
        {date && <button onClick={this.addToCalendar.bind(this)}>Add Meal to this day</button>}
         
-        <img src={this.props.pic} alt='x'/>
-        <div className='result-item-ingredients '>{ingredients}</div>
+        <img src={this.props.pic} alt='x'/><br/>
+        
+        <div className={this.state.hidden ? 'hidden':null} onClick={this.toggleClass.bind(this)}><button>View Ingredients</button><br/>{ingredients}</div> 
         </div>
     )
 

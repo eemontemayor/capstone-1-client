@@ -15,7 +15,7 @@ export default class MealBrowserForm extends Component{
 handleSubmit = e => {
   e.preventDefault()
 
-  MealApiService.getMeals(this.state.searchTerm)
+  MealApiService.getBrowserMeals(this.state.searchTerm)
     .then(res => {
       this.setState({
           searchResults: res.hits
