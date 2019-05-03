@@ -14,7 +14,7 @@ export default class AddMealPage extends Component{
             isBrowsing:true,
         })
     }
-    handleSubmit=(ev)=>{// should this function live here or in Parent component?
+    handleSubmit=(ev)=>{// should this function live here or in Parent component and passed down via context?
         ev.preventDefault()
         const on_day = this.state.date
       
@@ -23,7 +23,9 @@ export default class AddMealPage extends Component{
       MealApiService.postMeal({
         meal_name: meal_name.value,
         ingredients: ingredients.value,
-        on_day: on_day, //TO-DO must be able to pass in user_id to db
+        on_day: on_day, 
+        bookmarked: false
+        //user_id:
       })
         .then(res => {
           if (!res.ok)

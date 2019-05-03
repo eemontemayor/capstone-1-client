@@ -19,7 +19,7 @@ export default class ResultItem extends Component{
         image: pic,
         ingredients: formattedIngredients, 
         bookmarked: true
-       
+       //user_id:
       })
         .then(res => {
           if (!res.ok)
@@ -44,7 +44,9 @@ export default class ResultItem extends Component{
         meal_name: name,
         image: pic,
         ingredients: formattedIngredients, 
-        on_day: date
+        on_day: date,
+        bookmarked:false
+        //user_id:
        
       })
         .then(res => {
