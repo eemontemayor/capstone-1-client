@@ -3,8 +3,8 @@ import TokenService from '../services/token-service';
 
 const MealApiService = {
     getMeals(x) {
-      return fetch(`https://api.edamam.com/search?q=${x}&app_id=108438ee&app_key=9fa106c05de3b6d9c71df9aecbab94e6`, { // go to server then go to thirdparty website ?
-       // hide app id and app key when done
+      return fetch(`https://api.edamam.com/search?q=${x}&app_id=108438ee&app_key=9fa106c05de3b6d9c71df9aecbab94e6`, { 
+   
       })
         .then(res =>
           (!res.ok)
@@ -13,7 +13,7 @@ const MealApiService = {
         );
     },
     postMeal(x){
-      return fetch('http://localhost:8000/api/meals',{ 
+      return fetch('http://localhost:8000/api/meals',{ //TO-DO hide these endpoints in config/env files
         method: 'POST',
         headers:{
           'content-type':'application/json'
