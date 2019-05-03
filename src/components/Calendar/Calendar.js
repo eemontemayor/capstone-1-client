@@ -40,7 +40,7 @@ class Calendar extends React.Component {
 
     let startDate = dateFns.startOfWeek(this.state.currentMonth);//Return the start of a week for the given date.
 
-    for (let i = 0; i < 7; i++) { //render the jsx for the days in the week
+    for (let i = 0; i < 7; i++) {
       days.push(
         <div className="col col-center" key={i}>
           {dateFns.format(dateFns.addDays(startDate, i), dateFormat)}
@@ -63,10 +63,10 @@ class Calendar extends React.Component {
     const rows = [];
    
     let days = [];
-    let day= dayStart; // renders days in current week
+    let day= dayStart; 
     let month = dateFns.format(currentMonth, monthFormat);
     let year= dateFns.format(currentYear,yearFormat);
-    let formattedDate = ""; //number of date
+    let formattedDate = ""; 
    
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
@@ -75,11 +75,11 @@ class Calendar extends React.Component {
         const cloneDay = day; 
         days.push(
           <Link
-           to={`/addMeal/${year}-${month}-${formattedDate}`} //TO-DO  fix dynamic param to reflect date on url
+           to={`/addMeal/${year}-${month}-${formattedDate}`} 
             className={`col cell ${ 
               dateFns.isPast(day)
                 ? "disabled" 
-                : dateFns.isSameDay(day, selectedDate) ? "selected" : "" // else if day is the same day as selected Date in our state then add classname selected else add an empty string
+                : dateFns.isSameDay(day, selectedDate) ? "selected" : "" 
             }`}                                                          
             key={day}
             onClick={() => this.onDateClick(dateFns.parse(cloneDay))}// clondDay needed because otherwise onClick will always take endDate as clicked value since that's the value of day when loop ends (because we defined day in outer scope)

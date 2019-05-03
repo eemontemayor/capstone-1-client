@@ -11,6 +11,7 @@ import MealBrowserPage from '../../routes/MealBrowserPage';
 import MealPlannerPage from '../../routes/MealPlannerPage';
 import AddMealPage from '../../routes/AddMealPage';
 import ApiContext from "../../context/meals-context";
+import config from '../../config';
 
 class App extends Component {
   state = { 
@@ -23,31 +24,32 @@ class App extends Component {
     console.error(error);
     return { hasError: true };
   }
-  // componentDidMount(){
-  //   Promise.all([
-  //     fetch(`${config.API_ENDPOINT}/api/meals`),// initial fetch for landing page; shows all calendar and all meals
-  //     fetch(`${config.API_ENDPOINT}/api/calendar`)
-  //   ])
-  //     .then(([mealsRes, calendarRes]) => {
-  //       if (!mealsRes.ok)
-  //         return mealsRes.json().then(e => Promise.reject(e))
-  //       if (!calendarRes.ok)
-  //         return calendarRes.json().then(e => Promise.reject(e))
-
-  //       return Promise.all([
-  //         mealsRes.json(),
-  //         calendarRes.json(),
-  //       ])
-  //     })
-  //     .then(([meals, calendar]) => { //(((********)))
-  //       this.setState({ meals, calendar })
-       
-  //     })
-  //     .catch(error => {
-  //       console.error({ error })
-  //     })
-  // }
-  // }
+  componentDidMount(){
+    Promise.all([
+      fetch(`${config.API_ENDPOINT}/meals`),// initial fetch for landing page; shows all calendar and all meals
+      // fetch(`${config.API_ENDPOINT}/calendar`)
+    ])
+      .then(([mealsRes]) => {
+        if (!mealsRes.ok)
+          return mealsRes.json().then(e => Promise.reject(e))
+      
+        return Promise.all([
+          mealsRes.json(),
+         
+        ])
+      })
+      .then(([meals ]) => {
+        
+        this.setState({ 
+          meals:meals 
+        })
+        console.log(this.state.meals)
+      })
+      .catch(error => {
+        console.error({ error })
+      })
+  }
+  
 
   
 
@@ -86,6 +88,7 @@ render() {
     handleChange: this.handleChange,
 
   }
+  
     return (
       <ApiContext.Provider value={value}>
       <div className='App'>

@@ -54,6 +54,4 @@ export default class MealPlannerForm extends Component{
     );
   }
 }
-// renders a calendar component
-// button to adjust calendar length
-// click on a day to add a meal - > leads to addMeal Comp
+

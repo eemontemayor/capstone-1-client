@@ -17,16 +17,16 @@ class AddMealForm extends Component{
   static contextType = ApiContext
 
 
-  handleSubmit=(ev)=>{// this belongs in app and should be passed down via context or better on addMealComp
+  handleSubmit=(ev)=>{// should this function live here or in Parent component?
     ev.preventDefault()
     const on_day = this.props.match.params.date
-    console.log(on_day)
+  
     const {meal_name, ingredients} = ev.target
     
   MealApiService.postMeal({
     meal_name: meal_name.value,
     ingredients: ingredients.value,
-    on_day: on_day, 
+    on_day: on_day, //TO-DO must be able to pass in user_id to db
   })
     .then(res => {
       if (!res.ok)
