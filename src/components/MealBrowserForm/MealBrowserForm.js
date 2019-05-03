@@ -7,6 +7,7 @@ export default class MealBrowserForm extends Component{
     state={
         searchTerm:'',
         searchResults:[],
+        date:'',
     }
 
 
@@ -35,6 +36,7 @@ handleSubmit = e => {
 
 
     render(){
+      const date = this.props.date
       const {searchResults, searchTerm} = this.state
         return(
             <div>
@@ -78,7 +80,7 @@ handleSubmit = e => {
             </Button>
           </form>
           
-            <MealBrowserResults results={searchResults} />
+            <MealBrowserResults results={searchResults} date={date} />
           
         
             </div>

@@ -17,38 +17,18 @@ class AddMealForm extends Component{
   static contextType = ApiContext
 
 
-  handleSubmit=(ev)=>{// should this function live here or in Parent component?
-    ev.preventDefault()
-    const on_day = this.props.match.params.date
-  
-    const {meal_name, ingredients} = ev.target
-    
-  MealApiService.postMeal({
-    meal_name: meal_name.value,
-    ingredients: ingredients.value,
-    on_day: on_day, //TO-DO must be able to pass in user_id to db
-  })
-    .then(res => {
-      if (!res.ok)
-        return res.json().then(e => Promise.reject(e))
-      return res.json()
-    })
-    .then(meal => {
-      this.context.addMeal(meal)
-      this.props.history.push(`/addMeal/${on_day}`)
-    })
-  }
+
 
  
 
     render(){
-     
+     const {handleSubmit, date} = this.props
       const{  handleChange, meals } = this.context
       
         return(
             <form
-            className='AddMealForm' onSubmit={this.handleSubmit.bind(this)}>   
-            <div>{this.props.match.params.date}</div>        
+            className='AddMealForm' onSubmit={handleSubmit.bind(this)}>   
+            <div>{date}</div>        
             <div className='meal_name'>
               <label htmlFor='addMealForm_meal_name'>
                 Meal Name

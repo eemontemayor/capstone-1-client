@@ -12,7 +12,7 @@ export default class MealPlannerForm extends Component{
     handleSubmit=(ev)=>{
       
       ev.preventDefault()
-      //const calendar_id = ph for cal id generator TO-DO make database for calendars
+      // TO-DO make database for calendars
       const {calendarLength}= ev.target
       console.log(calendarLength.value)
       //CalendarApiService.postCalendar({ // calendar_id, })
