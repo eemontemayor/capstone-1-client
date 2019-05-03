@@ -11,11 +11,15 @@ export default class ResultItem extends Component{
     handleSubmit=(ev)=>{// this belongs in app and should be passed down via context or better on addMealComp
         ev.preventDefault()
         const {name, ingredients, pic} = this.props
-        console.log(name)
+        const formattedIngredients = []
+        for (let i=0; i<ingredients.length; i++){
+         formattedIngredients.push(ingredients[i].text) 
+        }
+        console.log(ingredients)
       MealApiService.postMeal({
         meal_name: name,
         image: pic,
-        // ingredients: ingredients ---> commenting this out until i can format it later
+        ingredients: formattedIngredients 
       })
         .then(res => {
           if (!res.ok)
