@@ -57,20 +57,25 @@ class Calendar extends React.Component {
     const weekEnd= dateFns.endOfWeek(currentDay)
     const dayStart = dateFns.endOfYesterday(currentDay);
     const endDate = dateFns.addWeeks(weekEnd, calendarLength-1)
-    const dateFormat = "D";
+    const dayFormat = "DD";
+    const monthFormat="MM";
+    const yearFormat="YYYY"
     const rows = [];
-    
+   
     let days = [];
     let day= dayStart; // renders days in current week
+    let month = dateFns.format(currentMonth, monthFormat);
+    let year= dateFns.format(currentYear,yearFormat);
     let formattedDate = ""; //number of date
    
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
-        formattedDate = dateFns.format(day, dateFormat);
+        formattedDate = dateFns.format(day, dayFormat);
+        console.log(month)
         const cloneDay = day; 
         days.push(
           <Link
-           to={`/addMeal/${cloneDay}`} //TO-DO  fix dynamic param to reflect date on url
+           to={`/addMeal/${year}-${month}-${formattedDate}`} //TO-DO  fix dynamic param to reflect date on url
             className={`col cell ${ 
               dateFns.isPast(day)
                 ? "disabled" 

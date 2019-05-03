@@ -26,7 +26,7 @@ class AddMealForm extends Component{
   MealApiService.postMeal({
     meal_name: meal_name.value,
     ingredients: ingredients.value,
-    on_day: "2019-05-03", //***************** */ TO-DO must be able to send it in the DATE format the db is expecting // so format current year, current month, and current day to plug into on_day below 
+    on_day: on_day, 
   })
     .then(res => {
       if (!res.ok)
