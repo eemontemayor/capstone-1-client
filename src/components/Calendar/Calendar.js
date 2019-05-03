@@ -10,6 +10,7 @@ class Calendar extends React.Component {
     currentDay: new Date(),
     currentMonth: new Date(),
     selectedDate: new Date(),
+    currentYear: new Date(),
     
   };
 
@@ -51,7 +52,7 @@ class Calendar extends React.Component {
   }
 
   renderCells() { // renders cells for each day of the week
-    const { currentMonth, currentDay, selectedDate} = this.state;
+    const {currentYear, currentMonth, currentDay, selectedDate} = this.state;
     const calendarLength = this.props.calendarLength;
     const weekEnd= dateFns.endOfWeek(currentDay)
     const dayStart = dateFns.endOfYesterday(currentDay);
@@ -69,7 +70,7 @@ class Calendar extends React.Component {
         const cloneDay = day; 
         days.push(
           <Link
-           to={`/addMeal/${formattedDate}`} //TO-DO  fix dynamic param to reflect date on url
+           to={`/addMeal/${cloneDay}`} //TO-DO  fix dynamic param to reflect date on url
             className={`col cell ${ 
               dateFns.isPast(day)
                 ? "disabled" 

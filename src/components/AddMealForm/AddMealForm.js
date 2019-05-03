@@ -19,14 +19,14 @@ class AddMealForm extends Component{
 
   handleSubmit=(ev)=>{// this belongs in app and should be passed down via context or better on addMealComp
     ev.preventDefault()
-    const on_day = this.props.match.params.day
+    const on_day = this.props.match.params.date
     console.log(on_day)
     const {meal_name, ingredients} = ev.target
     
   MealApiService.postMeal({
     meal_name: meal_name.value,
     ingredients: ingredients.value,
-    on_day: on_day,
+    on_day: "2019-05-03", //***************** */ TO-DO must be able to send it in the DATE format the db is expecting // so format current year, current month, and current day to plug into on_day below 
   })
     .then(res => {
       if (!res.ok)
@@ -48,7 +48,7 @@ class AddMealForm extends Component{
         return(
             <form
             className='AddMealForm' onSubmit={this.handleSubmit.bind(this)}>   
-            <div>{this.props.match.params.day}</div>        
+            <div>{this.props.match.params.date}</div>        
             <div className='meal_name'>
               <label htmlFor='addMealForm_meal_name'>
                 Meal Name

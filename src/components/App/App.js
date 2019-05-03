@@ -119,7 +119,7 @@ render() {
             />
             <Route 
             exact
-            path= '/addMeal/:day' 
+            path= '/addMeal/:date' 
             render={routeProps=>{
               return( <AddMealPage {...routeProps}/>)
             }} />
