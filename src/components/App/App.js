@@ -118,8 +118,11 @@ render() {
               component={MealPlannerPage}
             />
             <Route 
+            exact
             path= '/addMeal/:day' 
-            component= {AddMealPage}/>
+            render={routeProps=>{
+              return( <AddMealPage {...routeProps}/>)
+            }} />
           </Switch>
         </main>
       </div>

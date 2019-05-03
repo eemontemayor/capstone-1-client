@@ -10,7 +10,7 @@ class Calendar extends React.Component {
     currentDay: new Date(),
     currentMonth: new Date(),
     selectedDate: new Date(),
-    // calendarLength: new Date(),
+    
   };
 
   renderHeader() { 
@@ -51,7 +51,7 @@ class Calendar extends React.Component {
   }
 
   renderCells() { // renders cells for each day of the week
-    const { currentDay, selectedDate} = this.state;
+    const { currentMonth, currentDay, selectedDate} = this.state;
     const calendarLength = this.props.calendarLength;
     const weekEnd= dateFns.endOfWeek(currentDay)
     const dayStart = dateFns.endOfYesterday(currentDay);

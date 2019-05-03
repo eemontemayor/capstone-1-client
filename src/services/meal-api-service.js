@@ -13,7 +13,7 @@ const MealApiService = {
         );
     },
     postMeal(x){
-      return fetch('http://localhost:8000/api/meals',{
+      return fetch('http://localhost:8000/api/meals',{ 
         method: 'POST',
         headers:{
           'content-type':'application/json'

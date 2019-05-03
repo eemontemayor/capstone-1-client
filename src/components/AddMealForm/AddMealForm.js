@@ -2,14 +2,16 @@ import React, {Component} from 'react';
 import { Button, Input, Textarea } from '../Utils/Utils';
 import MealApiService from '../../services/meal-api-service';
 import ApiContext from '../../context/meals-context';
-export default class AddMealForm extends Component{
+import { withRouter } from 'react-router-dom';
+
+
+class AddMealForm extends Component{
   constructor(props) {
     super(props);
     this.state = {
       meal_name: '',
       ingredients:'',
       on_day:[],
-
     };
   }
   static contextType = ApiContext
@@ -17,11 +19,14 @@ export default class AddMealForm extends Component{
 
   handleSubmit=(ev)=>{// this belongs in app and should be passed down via context or better on addMealComp
     ev.preventDefault()
-    const {meal_name, ingredients, on_day} = ev.target
+    const on_day = this.props.match.params.day
+    console.log(on_day)
+    const {meal_name, ingredients} = ev.target
     
   MealApiService.postMeal({
     meal_name: meal_name.value,
-    ingredients: ingredients.value
+    ingredients: ingredients.value,
+    on_day: on_day,
   })
     .then(res => {
       if (!res.ok)
@@ -39,10 +44,11 @@ export default class AddMealForm extends Component{
     render(){
      
       const{  handleChange, meals } = this.context
-     
+      
         return(
             <form
-            className='AddMealForm' onSubmit={this.handleSubmit.bind(this)}>           
+            className='AddMealForm' onSubmit={this.handleSubmit.bind(this)}>   
+            <div>{this.props.match.params.day}</div>        
             <div className='meal_name'>
               <label htmlFor='addMealForm_meal_name'>
                 Meal Name
@@ -85,3 +91,4 @@ export default class AddMealForm extends Component{
         )
     }
 }
+export default withRouter(AddMealForm);
