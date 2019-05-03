@@ -8,7 +8,7 @@ export default class AddMealPage extends Component{
     state={
         isBrowsing:false,
         date:this.props.match.params.date,
-        meal:[]
+        
     }
     static contextType = ApiContext
 
@@ -16,13 +16,10 @@ export default class AddMealPage extends Component{
 
 
 
-    findMealByDate=(x)=>{ // use this function to return a meal on day clicked if one is already stored
-      let mealOfDay= this.context.meals.find( meal => meal.on_day === x)
-       this.setState({
-         meal:mealOfDay
-       }) 
-     }
-  
+
+
+ 
+ 
 
 
     showBrowser = e =>{
@@ -60,11 +57,11 @@ export default class AddMealPage extends Component{
     render(){
         const date =this.state.date
         const meals = this.context
-        console.log(meals)
-     
+       
+      
         return(
         <div>
-          if day already has meals, render them here
+     
             <div><AddMealForm date={date} handleSubmit={this.handleSubmit}/>
             <button onClick={this.showBrowser}>
                 Browse Meal for Ideas

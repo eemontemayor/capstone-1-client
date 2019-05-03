@@ -11,7 +11,8 @@ class Calendar extends React.Component {
     currentMonth: new Date(),
     selectedDate: new Date(),
     currentYear: new Date(),
-    
+    mealOfDay:[],
+    meals:[],
   };
 
   renderHeader() { 
@@ -79,6 +80,7 @@ class Calendar extends React.Component {
         formattedDate = dateFns.format(day, dayFormat);
         console.log(month)
         const cloneDay = day; 
+        
         days.push(
           <Link
            to={`/addMeal/${year}-${month}-${formattedDate}`} 
@@ -107,13 +109,35 @@ class Calendar extends React.Component {
     return <div className="body">{rows}</div>; //render the rows
   }
 
-  //================= Event handlers for click events===================//
+
+
+
+renderMealOfDay(e){
+return(
+  <div>MEAL OF DAY</div>
+
+)
+}
+findMealByDate=(x)=>{ // use this function to return a meal on day clicked if one is already stored
+  let mealOfDay= this.context.meals.find( meal => meal.on_day === x)
+   this.setState({
+     mealOfDay: mealOfDay,
+   
+},()=>mealOfDay
+)};
+
+ 
   onDateClick = day => { 
-    this.setState({
-      selectedDate: day
+
+    //********debug lines 115 to 140... seperate into different functions.... change what calendar cell listener does */
+    this.findMealByDate=(x)=>{ // use this function to return a meal on day clicked if one is already stored
+      let mealOfDay= this.context.meals.find( meal => meal.on_day === x)
+       this.setState({
+    
+        selectedDate: day
     });
   };
-
+}
 
 
   nextMonth = () => {
@@ -130,13 +154,14 @@ class Calendar extends React.Component {
 
  
 
-  render() {
+  render(){
     return (
     <div>
     
 
       <div className="calendar">
         {this.renderHeader()}
+        {this.state.mealOfDay && this.renderMealOfDay()}
          {this.renderDays()}
         {this.renderCells()} 
       </div>

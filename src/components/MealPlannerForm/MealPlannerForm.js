@@ -9,22 +9,13 @@ export default class MealPlannerForm extends Component{
     }
       static contextType = ApiContext
 
-    handleSubmit=(ev)=>{
+    handleSubmit=(ev)=>{  // not using this any function anymore..  rendering the calendar by month now
       
       ev.preventDefault()
-      // TO-DO make database for calendars
+    
       const {calendarLength}= ev.target
-      console.log(calendarLength.value)
-      //CalendarApiService.postCalendar({ // calendar_id, })
-      // .then(res => {
-      //   if (!res.ok)
-      //     return res.json().then(e => Promise.reject(e))
-      //   return res.json()
-      // })
-      // .then(calendar => {
-      //   this.context.addCalendar(calendar)
-      //   this.props.history.push(`/calendar/${cal_id}`) TO-DO make a function that deletes calendar from state if it is in the past.... will probably have to make a route on homepage if current calendar is still valid
-      // })
+      console.log(calendarLength.value) 
+    
     }
 
 
