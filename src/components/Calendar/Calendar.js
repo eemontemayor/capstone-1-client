@@ -88,7 +88,7 @@ class Calendar extends React.Component {
                 : dateFns.isSameDay(day, selectedDate) ? "selected" : "" 
             }`}                                                          
             key={day}
-            onClick={() => this.onDateClick(dateFns.parse(cloneDay))}// clondDay needed because otherwise onClick will always take endDate as clicked value since that's the value of day when loop ends (because we defined day in outer scope)
+            onClick={() => this.onDateClick(dateFns.parse(cloneDay))}  // clondDay needed because otherwise onClick will always take endDate as clicked value since that's the value of day when loop ends (because we defined day in outer scope)
           >
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
@@ -113,6 +113,8 @@ class Calendar extends React.Component {
       selectedDate: day
     });
   };
+
+
 
   nextMonth = () => {
     this.setState({

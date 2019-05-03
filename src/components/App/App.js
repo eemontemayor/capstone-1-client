@@ -16,7 +16,7 @@ import config from '../../config';
 class App extends Component {
   state = { 
     hasError: false,
-    calendar:[], /// this will contain the current calendar and the meals for each day
+    
     meals:[], /// this will be for the bookmarks and history component
   }
 
@@ -26,8 +26,7 @@ class App extends Component {
   }
   componentDidMount(){
     Promise.all([
-      fetch(`${config.API_ENDPOINT}/meals`),// initial fetch for landing page; shows all calendar and all meals
-      // fetch(`${config.API_ENDPOINT}/calendar`)
+      fetch(`${config.API_ENDPOINT}/meals`),// initial fetch for landing page; 
     ])
       .then(([mealsRes]) => {
         if (!mealsRes.ok)

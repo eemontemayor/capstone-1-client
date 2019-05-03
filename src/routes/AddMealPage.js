@@ -2,13 +2,29 @@ import React, {Component} from 'react';
 import AddMealForm from '../components/AddMealForm/AddMealForm';
 import MealBrowserForm from '../components/MealBrowserForm/MealBrowserForm';
 import MealApiService from '../services/meal-api-service';
-
+import ApiContext from '../context/meals-context';
 
 export default class AddMealPage extends Component{
     state={
         isBrowsing:false,
-        date:this.props.match.params.date
+        date:this.props.match.params.date,
+        meal:[]
     }
+    static contextType = ApiContext
+
+
+
+
+
+    findMealByDate=(x)=>{ // use this function to return a meal on day clicked if one is already stored
+      let mealOfDay= this.context.meals.find( meal => meal.on_day === x)
+       this.setState({
+         meal:mealOfDay
+       }) 
+     }
+  
+
+
     showBrowser = e =>{
         this.setState({
             isBrowsing:true,
@@ -40,12 +56,15 @@ export default class AddMealPage extends Component{
     
 
 
-//TO-DO must be able to autofill if adding a meal from browserComp from this page
+
     render(){
         const date =this.state.date
+        const meals = this.context
+        console.log(meals)
      
         return(
-
+        <div>
+          if day already has meals, render them here
             <div><AddMealForm date={date} handleSubmit={this.handleSubmit}/>
             <button onClick={this.showBrowser}>
                 Browse Meal for Ideas
@@ -58,6 +77,7 @@ export default class AddMealPage extends Component{
             </button><br/>
             {this.state.isBrowsing && <MealBrowserForm date={date} />} 
            </div>
+           </div> 
         )
     }
 }

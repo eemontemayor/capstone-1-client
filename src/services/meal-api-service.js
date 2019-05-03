@@ -1,4 +1,4 @@
-// import config from '../config';
+import config from '../config';
 import TokenService from '../services/token-service';
 
 const MealApiService = {
@@ -27,7 +27,20 @@ const MealApiService = {
           ? res.json().then(e => Promise.reject(e))
           : res.json()
       );
-    }
+    },
+    // getMeals(){
+    //   fetch(`${config.API_ENDPOINT}/meals`)// replace fetch on app comp with this one
+    //   .then((mealsRes) => {
+    //     if (!mealsRes.ok)
+    //       return mealsRes.json().then(e => Promise.reject(e))
+    //     return mealsRes.json()
+    //   })
+      
+    //   .catch(error => {
+    //     console.error({ error })
+    //   })
+    // },
+  
 
 };
 export default MealApiService;
