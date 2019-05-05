@@ -16,7 +16,7 @@ import config from '../../config';
 class App extends Component {
   state = { 
     hasError: false,
-    
+    mealOfDay:[],
     meals:[], /// this will be for the bookmarks and history component
   }
 
@@ -66,13 +66,14 @@ class App extends Component {
       ]
     })
   }
-
-  addCalendar = (calendar)=>{
-    console.log('yep')
+  findMealByDate=(x)=>{ // use this function to return a meal on day clicked if one is already stored
+  
+    let mealOfDay= this.state.meals.filter( meal => meal.on_day.startsWith(x))
+    console.log(mealOfDay)
     this.setState({
-      calendar: calendar
-    })
-  }
+      mealOfDay: mealOfDay
+    }) 
+  };
 
 
 
@@ -81,8 +82,8 @@ class App extends Component {
 render() {
   const value={
     meals:this.state.meals,
-    calendar: this.state.calendar,
-    addCalendar:this.state.addCalendar,
+    mealOfDay:this.state.mealOfDay,
+    findMealByDate:this.findMealByDate,
     addMeal: this.addMeal,
     handleChange: this.handleChange,
 

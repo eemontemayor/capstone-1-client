@@ -12,12 +12,16 @@ export default class AddMealPage extends Component{
     }
     static contextType = ApiContext
 
+    componentDidMount(){
+      this.context.findMealByDate(this.state.date)
+    }
 
-    renderMealOfDay(){
-      console.log('here')
-      this.props.mealOfDay.map(i => {
+
+    renderMealOfDay(x){
+     let html = x.map(i => {
         return(`<div>${i.meal_name}</div>}`)
       })
+      return html;
     }
 
     showBrowser = e =>{
@@ -58,12 +62,16 @@ export default class AddMealPage extends Component{
 
     render(){
         const date =this.state.date
-        const meals = this.renderMealOfDay
+        const meals = this.context.meals
+        const mealOfDay= this.context.mealOfDay
+        console.log(mealOfDay)
+   
+      
        
       
         return(
         <div>
-         
+          {this.renderMealOfDay(mealOfDay)} 
             <div><AddMealForm date={date} handleSubmit={this.handleSubmit}/>
             <button onClick={this.showBrowser}>
                 Browse Meal for Ideas

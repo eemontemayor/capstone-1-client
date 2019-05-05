@@ -12,7 +12,7 @@ class Calendar extends React.Component {
     currentMonth: new Date(),
     selectedDate: new Date(),
     currentYear: new Date(),
-    mealOfDay:[],
+    
     addingMeal: false,
   };
   static contextType = ApiContext;
@@ -116,18 +116,11 @@ class Calendar extends React.Component {
 
 
 
-findMealByDate=(x)=>{ // use this function to return a meal on day clicked if one is already stored
-  
-  let mealOfDay= this.context.meals.filter( meal => meal.on_day.startsWith(x))
-  console.log(mealOfDay)
-  this.setState({
-    mealOfDay: mealOfDay
-  }) 
-};
+
 
  
   onDateClick = day => { 
-    this.findMealByDate(day);
+      this.context.findMealByDate(day)
        this.setState({
         selectedDate: day,
         addingMeal: true,
@@ -157,7 +150,7 @@ findMealByDate=(x)=>{ // use this function to return a meal on day clicked if on
 
       <div className="calendar">
         {this.renderHeader()}
-        {this.state.addingMeal  && <AddMealPage mealOfDay={this.state.mealOfDay} />}
+       
          {this.renderDays()}
         {this.renderCells()} 
       </div>

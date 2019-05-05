@@ -25,7 +25,7 @@ export default class MealPlannerForm extends Component{
         });
       }
   render() {
-    const {addCalendar, meals, calendars}= this.context
+   
     return (
       <div>
         <form  onSubmit={this.handleSubmit.bind(this)}>
