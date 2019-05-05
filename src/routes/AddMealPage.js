@@ -13,20 +13,13 @@ export default class AddMealPage extends Component{
     static contextType = ApiContext
 
 
-
-
-
-
-
- 
- 
-
-
     showBrowser = e =>{
         this.setState({
             isBrowsing:true,
         })
     }
+
+    
     handleSubmit=(ev)=>{// should this function live here or in Parent component and passed down via context?
         ev.preventDefault()
         const on_day = this.state.date
