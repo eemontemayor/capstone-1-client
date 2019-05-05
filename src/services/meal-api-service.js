@@ -22,11 +22,14 @@ const MealApiService = {
         body: JSON.stringify(x)
 
       })
-      .then(res =>
+      .then(res => {
         (!res.ok)
           ? res.json().then(e => Promise.reject(e))
           : res.json()
-      );
+      })
+      .catch(error => {
+        console.log({error})
+      })
     },
     // getMeals(){
     //   fetch(`${config.API_ENDPOINT}/meals`)// replace fetch on app comp with this one

@@ -38,16 +38,18 @@ export default class AddMealPage extends Component{
         ingredients: ingredients.value,
         on_day: on_day, 
         bookmarked: false
-        //user_id:
       })
-        .then(res => {
-          if (!res.ok)
-            return res.json().then(e => Promise.reject(e))
-          return res.json()
-        })
+      // .then(res => {
+      //   (!res.ok)
+      //     ? res.json().then(e => Promise.reject(e))
+      //     : res.json()
+      // })
         .then(meal => {
           this.context.addMeal(meal)
           this.props.history.push(`/addMeal/${on_day}`)
+        })
+        .catch(error => {
+          console.log({error})
         })
       }
     
