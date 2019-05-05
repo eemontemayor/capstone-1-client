@@ -8,10 +8,17 @@ export default class AddMealPage extends Component{
     state={
         isBrowsing:false,
         date:this.props.match.params.date,
-        
+       
     }
     static contextType = ApiContext
 
+
+    renderMealOfDay(){
+      console.log('here')
+      this.props.mealOfDay.map(i => {
+        return(`<div>${i.meal_name}</div>}`)
+      })
+    }
 
     showBrowser = e =>{
         this.setState({
@@ -19,7 +26,7 @@ export default class AddMealPage extends Component{
         })
     }
 
-    
+
     handleSubmit=(ev)=>{// should this function live here or in Parent component and passed down via context?
         ev.preventDefault()
         const on_day = this.state.date
@@ -49,12 +56,12 @@ export default class AddMealPage extends Component{
 
     render(){
         const date =this.state.date
-        const meals = this.context
+        const meals = this.renderMealOfDay
        
       
         return(
         <div>
-     
+         
             <div><AddMealForm date={date} handleSubmit={this.handleSubmit}/>
             <button onClick={this.showBrowser}>
                 Browse Meal for Ideas

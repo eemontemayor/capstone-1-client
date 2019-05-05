@@ -2,7 +2,8 @@ import React from "react";
 import dateFns from "date-fns";
 import './Calendar.css';
 import { Link} from 'react-router-dom';
-
+import ApiContext from '../../context/meals-context';
+import AddMealPage from "../../routes/AddMealPage";
 
 
 class Calendar extends React.Component {
@@ -12,8 +13,9 @@ class Calendar extends React.Component {
     selectedDate: new Date(),
     currentYear: new Date(),
     mealOfDay:[],
-    meals:[],
+    addingMeal: false,
   };
+  static contextType = ApiContext;
 
   renderHeader() { 
     const dateFormat = "MMMM YYYY";
@@ -74,26 +76,27 @@ class Calendar extends React.Component {
     let month = dateFns.format(currentMonth, monthFormat);
     let year= dateFns.format(currentYear,yearFormat);
     let formattedDate = ""; 
-   
+   let formattedDay = "";
+
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
-        formattedDate = dateFns.format(day, dayFormat);
-        console.log(month)
-        const cloneDay = day; 
+        formattedDay = dateFns.format(day, dayFormat);
+        formattedDate = `${year}-${month}-${formattedDay}`
+        const cloneDay = formattedDate; 
         
         days.push(
           <Link
-           to={`/addMeal/${year}-${month}-${formattedDate}`} 
+           to={`/addMeal/${formattedDate}`} 
             className={`col cell ${ 
               dateFns.isPast(day)
                 ? "disabled" 
                 : dateFns.isSameDay(day, selectedDate) ? "selected" : "" 
             }`}                                                          
             key={day}
-            onClick={() => this.onDateClick(dateFns.parse(cloneDay))}  // clondDay needed because otherwise onClick will always take endDate as clicked value since that's the value of day when loop ends (because we defined day in outer scope)
+            onClick={() => this.onDateClick(cloneDay)}  // clondDay needed because otherwise onClick will always take endDate as clicked value since that's the value of day when loop ends (because we defined day in outer scope)
           >
-            <span className="number">{formattedDate}</span>
-            <span className="bg">{formattedDate}</span>
+            <span className="number">{formattedDay}</span>
+            <span className="bg">{formattedDay}</span>
           </Link>
           
         );
@@ -112,32 +115,25 @@ class Calendar extends React.Component {
 
 
 
-renderMealOfDay(e){
-return(
-  <div>MEAL OF DAY</div>
 
-)
-}
 findMealByDate=(x)=>{ // use this function to return a meal on day clicked if one is already stored
-  let mealOfDay= this.context.meals.find( meal => meal.on_day === x)
-   this.setState({
-     mealOfDay: mealOfDay,
-   
-},()=>mealOfDay
-)};
+  
+  let mealOfDay= this.context.meals.filter( meal => meal.on_day.startsWith(x))
+  console.log(mealOfDay)
+  this.setState({
+    mealOfDay: mealOfDay
+  }) 
+};
 
  
   onDateClick = day => { 
-
-    //********debug lines 115 to 140... seperate into different functions.... change what calendar cell listener does */
-    this.findMealByDate=(x)=>{ // use this function to return a meal on day clicked if one is already stored
-      let mealOfDay= this.context.meals.find( meal => meal.on_day === x)
+    this.findMealByDate(day);
        this.setState({
-    
-        selectedDate: day
+        selectedDate: day,
+        addingMeal: true,
     });
   };
-}
+
 
 
   nextMonth = () => {
@@ -161,7 +157,7 @@ findMealByDate=(x)=>{ // use this function to return a meal on day clicked if on
 
       <div className="calendar">
         {this.renderHeader()}
-        {this.state.mealOfDay && this.renderMealOfDay()}
+        {this.state.addingMeal  && <AddMealPage mealOfDay={this.state.mealOfDay} />}
          {this.renderDays()}
         {this.renderCells()} 
       </div>
