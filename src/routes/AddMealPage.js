@@ -74,7 +74,7 @@ export default class AddMealPage extends Component{
         const date =this.state.date
         const mealOfDay= this.context.mealOfDay
 
-        console.log(this.context.selectedDay)
+        
       
        
       

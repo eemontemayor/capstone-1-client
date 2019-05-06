@@ -106,20 +106,6 @@ class Calendar extends React.Component {
     }
 
 
-
-
-
-
-
- 
-  // onDateClick = day => { 
-  //      this.setState({
-  //       selectedDate: day,
-  //   });
-  // };
-
-
-
   nextMonth = () => {
     this.setState({
       currentMonth: dateFns.addMonths(this.state.currentMonth, 1)

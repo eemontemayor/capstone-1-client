@@ -72,10 +72,10 @@ class App extends Component {
   }
 
   onDateClick = day => { 
-    debugger
-    console.log('here')
     this.setState({
      selectedDate: day,
+ }, ()=>{
+    this.findMealByDate(day)
  });
 };
   addToCalDay = (meal) =>{
@@ -88,8 +88,18 @@ class App extends Component {
     })
   }
   findMealByDate=(day)=>{
-    let MOD= this.state.meals.filter( meal => meal.on_day.startsWith(day))
-    return MOD;
+    if(this.state.meals.length !== null){
+      let MOD = []
+      let meals=this.state.meals
+      
+      console.log(meals)
+    //   MOD = meals.filter(i => i.on_day.startsWith(day))
+      
+    // console.log(MOD);
+    } else{
+      return console.log('here')
+    }
+    
   };
 
 
@@ -105,7 +115,8 @@ render() {
     addMeal: this.addMeal,
     handleChange: this.handleChange,
     selectedDay:this.state.selectedDay,
-    findMealByDate:this.findMealByDate
+    findMealByDate:this.findMealByDate,
+    onDateClick:this.onDateClick
   }
   
     return (
