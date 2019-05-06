@@ -74,12 +74,14 @@ class App extends Component {
   onDateClick = day => { 
     this.setState({
      selectedDate: day,
+     mealOfDay:[],
  }, ()=>{
     this.findMealByDate(day)
  });
 };
 
 findMealByDate=(day)=>{
+
   if(this.state.meals.length !== null){
     let MOD = []
     let meals=this.state.meals
@@ -92,7 +94,7 @@ findMealByDate=(day)=>{
 
 addToCalDay = (...meals) =>{
   console.log(meals[0])
-  let modArray=[]
+  let modArray=[this.state.mealOfDay]
   for (let i of meals[0]){
     modArray.push(i.meal_name)
   }

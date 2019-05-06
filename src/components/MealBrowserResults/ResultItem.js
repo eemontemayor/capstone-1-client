@@ -55,7 +55,7 @@ export default class ResultItem extends Component{
         }
         this.context.addMeal(newMeal)
         this.context.addToCalDay([newMeal])
-        console.log([newMeal.meal_name])
+ 
       MealApiService.postMeal({
         meal_name: name,
         image: pic,
