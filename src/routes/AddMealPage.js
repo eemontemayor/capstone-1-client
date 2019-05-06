@@ -22,10 +22,10 @@ export default class AddMealPage extends Component{
   
 
 
-    renderMealOfDay(x){
+    renderMealOfDay(...x){
     
-     let html = x.map(i => {
-        return(`${i.meal_name}`)
+     let html = x.map(i => { //TO-DO turn this into its own component and add a delete button
+        return(`${i}`)
       })
       return html;
     }
@@ -51,7 +51,7 @@ export default class AddMealPage extends Component{
 
       this.context.addMeal(newMeal)
 
-      this.context.addToCalDay(newMeal)
+      this.context.addToCalDay([newMeal])
 
       MealApiService.postMeal({
         meal_name: meal_name.value,
@@ -80,7 +80,7 @@ export default class AddMealPage extends Component{
       
         return(
         <div>
-          {/* {this.renderMealOfDay(mealOfDay)}  */}
+          {this.renderMealOfDay(...mealOfDay)} 
             <div><AddMealForm date={date} handleSubmit={this.handleSubmit}/>
             <button onClick={this.showBrowser}>
                 Browse Meal for Ideas

@@ -78,29 +78,29 @@ class App extends Component {
     this.findMealByDate(day)
  });
 };
-  addToCalDay = (...meals) =>{
-    console.log(meals[0])
-    let modArray=[]
-    for (let i of meals[0]){
-      modArray.push(i.meal_name)
-    }
-    console.log(modArray) 
-    this.setState({
-        mealOfDay: modArray//TO-DO change this so that it will accept an array of entries once the db gets big enough
-      })
-    }
-  
-  findMealByDate=(day)=>{
-    if(this.state.meals.length !== null){
-      let MOD = []
-      let meals=this.state.meals
-      MOD = meals.filter(i => i.on_day.startsWith(day)) // hadn't realized my server was returning an array from db
-      this.addToCalDay(MOD)
-    } else{
-      return console.log('here')
-    }
-  };
 
+findMealByDate=(day)=>{
+  if(this.state.meals.length !== null){
+    let MOD = []
+    let meals=this.state.meals
+    MOD = meals.filter(i => i.on_day.startsWith(day)) // hadn't realized my server was returning an array from db
+    this.addToCalDay(MOD)
+  } else{
+    return console.log('here')
+  }
+};
+
+addToCalDay = (...meals) =>{
+  console.log(meals[0])
+  let modArray=[]
+  for (let i of meals[0]){
+    modArray.push(i.meal_name)
+  }
+  console.log(modArray) 
+  this.setState({
+      mealOfDay: modArray//TO-DO change this so that it will accept an array of entries once the db gets big enough
+    })
+  }
 
 
 
