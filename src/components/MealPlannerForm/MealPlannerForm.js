@@ -39,7 +39,7 @@ export default class MealPlannerForm extends Component{
       <button type="submit" >save</button>
       </form>
         <Calendar
-        calendarLength={this.state.calendarLength}
+   
         />
       </div>
     );

@@ -12,8 +12,6 @@ class Calendar extends React.Component {
     currentMonth: new Date(),
     selectedDate: new Date(),
     currentYear: new Date(),
-    
-    addingMeal: false,
   };
   static contextType = ApiContext;
 
@@ -56,14 +54,9 @@ class Calendar extends React.Component {
 
   renderCells() { // renders cells for each day of the week
     const {currentYear, currentMonth, selectedDate} = this.state;
-    
     const monthStart = dateFns.startOfMonth(currentMonth);
-    const startDate = dateFns.startOfWeek(monthStart);
-
-    
     const monthEnd = dateFns.endOfMonth(monthStart);
-
-    
+    const startDate = dateFns.startOfWeek(monthStart);
     const endDate = dateFns.endOfWeek(monthEnd)
     
     const dayFormat = "DD";
@@ -93,7 +86,7 @@ class Calendar extends React.Component {
                 : dateFns.isSameDay(day, selectedDate) ? "selected" : "" 
             }`}                                                          
             key={day}
-            onClick={() => this.onDateClick(cloneDay)}  // clondDay needed because otherwise onClick will always take endDate as clicked value since that's the value of day when loop ends (because we defined day in outer scope)
+            onClick={() => this.context.onDateClick(cloneDay)}  // clondDay needed because otherwise onClick will always take endDate as clicked value since that's the value of day when loop ends (because we defined day in outer scope)
           >
             <span className="number">{formattedDay}</span>
             <span className="bg">{formattedDay}</span>
@@ -119,15 +112,11 @@ class Calendar extends React.Component {
 
 
  
-  onDateClick = day => { 
-    
-      this.context.findMealByDate(day)
-       this.setState({
-        selectedDate: day,
-        addingMeal: true,
-    });
-    
-  };
+  // onDateClick = day => { 
+  //      this.setState({
+  //       selectedDate: day,
+  //   });
+  // };
 
 
 

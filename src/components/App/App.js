@@ -18,6 +18,7 @@ class App extends Component {
     hasError: false,
     meals:[], 
     mealOfDay:[],
+    selectedDay:null,
   }
 
   static getDerivedStateFromError(error) {
@@ -69,6 +70,14 @@ class App extends Component {
       ]
     })
   }
+
+  onDateClick = day => { 
+    debugger
+    console.log('here')
+    this.setState({
+     selectedDate: day,
+ });
+};
   addToCalDay = (meal) =>{
     console.log(meal)
     this.setState({
@@ -78,6 +87,10 @@ class App extends Component {
       ]
     })
   }
+  findMealByDate=(day)=>{
+    let MOD= this.state.meals.filter( meal => meal.on_day.startsWith(day))
+    return MOD;
+  };
 
 
 
@@ -91,7 +104,8 @@ render() {
     deleteMeal: this.deleteMeal,
     addMeal: this.addMeal,
     handleChange: this.handleChange,
-
+    selectedDay:this.state.selectedDay,
+    findMealByDate:this.findMealByDate
   }
   
     return (

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Button, Input, Section } from '../Utils/Utils';
+import { Button, Input } from '../Utils/Utils';
 import MealApiService from '../../services/meal-api-service';
 import MealBrowserResults from '../MealBrowserResults/MealBrowserResults';
 import { withRouter } from 'react-router-dom';
@@ -7,7 +7,7 @@ import ApiContext from '../../context/meals-context';
 
 class MealBrowserForm extends Component{
     state={
-        searchTerm:'',
+      
         searchResults:[],
         date:'',
     }
@@ -39,7 +39,7 @@ handleSubmit = e => {
 
     render(){
       const date = this.props.date
-      const {searchResults, searchTerm} = this.state
+      const {searchResults} = this.state
      
         return(
             <div>

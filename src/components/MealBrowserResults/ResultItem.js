@@ -64,12 +64,7 @@ export default class ResultItem extends Component{
         bookmarked:false
        
       })
-        // .then(meal => {
-        //   console.log(meal)
-        //   console.log(this.context)
-        //   this.context.addMeal(meal)
-        //   this.props.history.push(`/addMeal/${date}`)
-        // })
+  
       }
 
 

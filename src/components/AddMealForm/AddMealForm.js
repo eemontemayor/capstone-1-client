@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { Button, Input, Textarea } from '../Utils/Utils';
-import MealApiService from '../../services/meal-api-service';
 import ApiContext from '../../context/meals-context';
 import { withRouter } from 'react-router-dom';
 
@@ -23,7 +22,7 @@ class AddMealForm extends Component{
 
     render(){
      const {handleSubmit, date} = this.props
-      const{  handleChange, meals } = this.context
+      const{  handleChange } = this.context
       
         return(
             <form

@@ -10,21 +10,16 @@ export default class AddMealPage extends Component{
       this.state={
             isBrowsing:false,
             date:this.props.match.params.date,
-           mealOfDay:[],
+      
         }
     }
     static contextType = ApiContext
 
     componentDidMount(){
- 
+      
     }
     
-    findMealByDate=(x)=>{ // use this function to return a meal on day clicked if one is already stored
-        console.log(this.context.meals)
-        let MOD= this.context.meals.filter( meal => meal.on_day.startsWith(x))
-       
-        this.context.addToCalDay(MOD)
-      };
+  
 
 
     renderMealOfDay(x){
@@ -78,8 +73,8 @@ export default class AddMealPage extends Component{
     render(){
         const date =this.state.date
         const mealOfDay= this.context.mealOfDay
-        
-   
+
+        console.log(this.context.selectedDay)
       
        
       
