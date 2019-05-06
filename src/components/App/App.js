@@ -17,6 +17,7 @@ class App extends Component {
   state = { 
     hasError: false,
     meals:[], 
+    mealOfDay:[],
   }
 
   static getDerivedStateFromError(error) {
@@ -30,18 +31,14 @@ class App extends Component {
       .then(([mealsRes]) => {
         if (!mealsRes.ok)
           return mealsRes.json().then(e => Promise.reject(e))
-      
         return Promise.all([
           mealsRes.json(),
-         
         ])
       })
-      .then(([meals]) => { //TO-DO change initial fetch so that it only returns meals that user has submitted (now the whole db)
-        
+      .then(([meals]) => { //TO-DO change initial fetch so that it only returns meals that user has submitted (now the whole db)  
         this.setState({ 
           meals:meals 
         })
-        console.log(this.state.meals)
       })
       .catch(error => {
         console.error({ error })
@@ -72,7 +69,15 @@ class App extends Component {
       ]
     })
   }
-
+  addToCalDay = (meal) =>{
+    console.log(meal)
+    this.setState({
+      mealOfDay:[
+        ...this.state.mealOfDay,
+        meal
+      ]
+    })
+  }
 
 
 
@@ -82,7 +87,7 @@ render() {
   const value={
     meals:this.state.meals,
     mealOfDay:this.state.mealOfDay,
-    findMealByDate:this.findMealByDate,
+    addToCalDay:this.addToCalDay,
     deleteMeal: this.deleteMeal,
     addMeal: this.addMeal,
     handleChange: this.handleChange,

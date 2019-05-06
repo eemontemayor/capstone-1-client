@@ -46,8 +46,15 @@ export default class ResultItem extends Component{
          formattedIngredients.push(ingredients[i].text) 
         }
 
-        
-
+        let newMeal={
+          meal_name: name,
+          image: pic,
+          ingredients: formattedIngredients, 
+          on_day: date,
+          bookmarked:false
+        }
+        this.context.addMeal(newMeal)
+        this.context.addToCalDay(newMeal)
         
       MealApiService.postMeal({
         meal_name: name,

@@ -16,24 +16,21 @@ export default class AddMealPage extends Component{
     static contextType = ApiContext
 
     componentDidMount(){
-      this.findMealByDate(this.state.date)
+ 
     }
     
     findMealByDate=(x)=>{ // use this function to return a meal on day clicked if one is already stored
-
+        console.log(this.context.meals)
         let MOD= this.context.meals.filter( meal => meal.on_day.startsWith(x))
        
-        this.setState({
-          mealOfDay: [...this.state.mealOfDay,
-            MOD]
-        }) 
+        this.context.addToCalDay(MOD)
       };
 
 
     renderMealOfDay(x){
     
      let html = x.map(i => {
-        return(`<div>${i.meal_name}</div>`)
+        return(`${i.meal_name}`)
       })
       return html;
     }
@@ -45,7 +42,7 @@ export default class AddMealPage extends Component{
     }
 
 
-    handleSubmit=(ev)=>{// should this function live here or in Parent component and passed down via context?
+    handleSubmit=(ev)=>{
         ev.preventDefault()
         const on_day = this.state.date
       
@@ -59,12 +56,7 @@ export default class AddMealPage extends Component{
 
       this.context.addMeal(newMeal)
 
-      this.setState({
-        mealOfDay:[
-          ...this.state.mealOfDay,
-          newMeal
-        ]
-      })
+      this.context.addToCalDay(newMeal)
 
       MealApiService.postMeal({
         meal_name: meal_name.value,
@@ -72,12 +64,7 @@ export default class AddMealPage extends Component{
         on_day: on_day, 
         bookmarked: false
       })
-        // .then((res => { <------------- should i not have this here???
-        //   console.log(res);
-          
-        //   // this.context.addMeal(meal)
-        //   // this.props.history.push(`/addMeal/${on_day}`)
-        // })
+  
 
      
         .catch(error => {
@@ -90,7 +77,7 @@ export default class AddMealPage extends Component{
 
     render(){
         const date =this.state.date
-        const mealOfDay= this.state.mealOfDay
+        const mealOfDay= this.context.mealOfDay
         
    
       
