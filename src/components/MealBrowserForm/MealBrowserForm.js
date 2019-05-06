@@ -3,6 +3,7 @@ import { Button, Input, Section } from '../Utils/Utils';
 import MealApiService from '../../services/meal-api-service';
 import MealBrowserResults from '../MealBrowserResults/MealBrowserResults';
 import { withRouter } from 'react-router-dom';
+import ApiContext from '../../context/meals-context';
 
 class MealBrowserForm extends Component{
     state={
@@ -10,7 +11,7 @@ class MealBrowserForm extends Component{
         searchResults:[],
         date:'',
     }
-
+static contextType = ApiContext
 
  
 handleSubmit = e => {
@@ -39,6 +40,7 @@ handleSubmit = e => {
     render(){
       const date = this.props.date
       const {searchResults, searchTerm} = this.state
+     
         return(
             <div>
             <form onSubmit={this.handleSubmit}

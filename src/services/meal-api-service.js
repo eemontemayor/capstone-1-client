@@ -31,18 +31,6 @@ const MealApiService = {
         console.log({error})
       })
     },
-    // getMeals(){
-    //   fetch(`${config.API_ENDPOINT}/meals`)// replace fetch on app comp with this one
-    //   .then((mealsRes) => {
-    //     if (!mealsRes.ok)
-    //       return mealsRes.json().then(e => Promise.reject(e))
-    //     return mealsRes.json()
-    //   })
-      
-    //   .catch(error => {
-    //     console.error({ error })
-    //   })
-    // },
   
 
 };

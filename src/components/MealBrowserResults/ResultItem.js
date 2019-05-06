@@ -45,6 +45,9 @@ export default class ResultItem extends Component{
         for (let i=0; i<ingredients.length; i++){
          formattedIngredients.push(ingredients[i].text) 
         }
+
+        
+
         
       MealApiService.postMeal({
         meal_name: name,
@@ -77,6 +80,7 @@ export default class ResultItem extends Component{
 
 
     render(){
+      console.log(this.props)
    const{ date}=this.props
    const ingredients= this.props.ingredients.map((i, index)=>{
         return <p key={index}>{i.text}</p>

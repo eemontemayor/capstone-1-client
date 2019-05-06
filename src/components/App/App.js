@@ -16,7 +16,6 @@ import config from '../../config';
 class App extends Component {
   state = { 
     hasError: false,
-    mealOfDay:[],
     meals:[], 
   }
 
@@ -37,7 +36,7 @@ class App extends Component {
          
         ])
       })
-      .then(([meals ]) => { //TO-DO change initial fetch so that it only returns meals that user has submitted (now the whole db)
+      .then(([meals]) => { //TO-DO change initial fetch so that it only returns meals that user has submitted (now the whole db)
         
         this.setState({ 
           meals:meals 
@@ -73,15 +72,7 @@ class App extends Component {
       ]
     })
   }
-  findMealByDate=(x)=>{ // use this function to return a meal on day clicked if one is already stored
-  
-    let MOD= this.state.meals.filter( meal => meal.on_day.startsWith(x))
-    
-    this.setState({
-      mealOfDay: [...this.state.mealOfDay,
-        MOD]
-    }) 
-  };
+
 
 
 

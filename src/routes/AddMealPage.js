@@ -5,21 +5,33 @@ import MealApiService from '../services/meal-api-service';
 import ApiContext from '../context/meals-context';
 
 export default class AddMealPage extends Component{
-    state={
-        isBrowsing:false,
-        date:this.props.match.params.date,
-       
+    constructor(props){
+      super(props)
+      this.state={
+            isBrowsing:false,
+            date:this.props.match.params.date,
+           mealOfDay:[],
+        }
     }
     static contextType = ApiContext
 
     componentDidMount(){
-      this.context.findMealByDate(this.state.date)
+      this.findMealByDate(this.state.date)
     }
     
-    
+    findMealByDate=(x)=>{ // use this function to return a meal on day clicked if one is already stored
+
+        let MOD= this.context.meals.filter( meal => meal.on_day.startsWith(x))
+       
+        this.setState({
+          mealOfDay: [...this.state.mealOfDay,
+            MOD]
+        }) 
+      };
+
+
     renderMealOfDay(x){
-      
-     
+    
      let html = x.map(i => {
         return(`<div>${i.meal_name}</div>`)
       })
@@ -38,19 +50,36 @@ export default class AddMealPage extends Component{
         const on_day = this.state.date
       
         const {meal_name, ingredients} = ev.target
-        
+        const newMeal = {
+          meal_name: meal_name.value,
+          ingredients: ingredients.value,
+          on_day: on_day, 
+          bookmarked: false
+        }
+
+      this.context.addMeal(newMeal)
+
+      this.setState({
+        mealOfDay:[
+          ...this.state.mealOfDay,
+          newMeal
+        ]
+      })
+
       MealApiService.postMeal({
         meal_name: meal_name.value,
         ingredients: ingredients.value,
         on_day: on_day, 
         bookmarked: false
       })
-        .then(res => {
-          console.log([res]) // this is coming out undefined ??????
+        // .then((res => { <------------- should i not have this here???
+        //   console.log(res);
           
-          // this.context.addMeal(meal)
-          // this.props.history.push(`/addMeal/${on_day}`)
-        })
+        //   // this.context.addMeal(meal)
+        //   // this.props.history.push(`/addMeal/${on_day}`)
+        // })
+
+     
         .catch(error => {
           console.log({error})
         })
@@ -61,9 +90,7 @@ export default class AddMealPage extends Component{
 
     render(){
         const date =this.state.date
-        const meals = this.context.meals
-        const mealOfDay= this.context.mealOfDay
-       console.log(mealOfDay)
+        const mealOfDay= this.state.mealOfDay
         
    
       
@@ -82,7 +109,7 @@ export default class AddMealPage extends Component{
             <button>
                 View Meal Bookmarks
             </button><br/>
-            {this.state.isBrowsing && <MealBrowserForm date={date} />} 
+            {this.state.isBrowsing && <MealBrowserForm mealOfDay={mealOfDay}date={date} addToCalDay={this.handleSubmit} />} 
            </div>
            </div> 
         )
