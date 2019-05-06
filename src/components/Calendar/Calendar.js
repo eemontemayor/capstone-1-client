@@ -108,9 +108,9 @@ class Calendar extends React.Component {
         </div>
       );
       days = [];
+      }
+      return <div className="body">{rows}</div>; //render the rows
     }
-    return <div className="body">{rows}</div>; //render the rows
-  }
 
 
 
@@ -120,11 +120,13 @@ class Calendar extends React.Component {
 
  
   onDateClick = day => { 
+    
       this.context.findMealByDate(day)
        this.setState({
         selectedDate: day,
         addingMeal: true,
     });
+    
   };
 
 
@@ -146,11 +148,8 @@ class Calendar extends React.Component {
   render(){
     return (
     <div>
-    
-
       <div className="calendar">
         {this.renderHeader()}
-       
          {this.renderDays()}
         {this.renderCells()} 
       </div>

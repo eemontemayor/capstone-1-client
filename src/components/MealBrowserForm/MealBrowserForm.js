@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import { Button, Input, Section } from '../Utils/Utils';
 import MealApiService from '../../services/meal-api-service';
 import MealBrowserResults from '../MealBrowserResults/MealBrowserResults';
+import { withRouter } from 'react-router-dom';
 
-export default class MealBrowserForm extends Component{
+class MealBrowserForm extends Component{
     state={
         searchTerm:'',
         searchResults:[],
@@ -87,3 +88,4 @@ handleSubmit = e => {
         )
     }
 }
+export default withRouter(MealBrowserForm)

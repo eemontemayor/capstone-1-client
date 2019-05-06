@@ -25,6 +25,11 @@ export default class ResultItem extends Component{
         ingredients: formattedIngredients, 
         bookmarked: true
       })
+      // .then(res => {
+      //   if (!res.ok)
+      //     return res.json().then(e => Promise.reject(e))
+      //   return res.json()
+      // })
         .then(meal => {
           console.log(this.context)
           this.context.addMeal(meal)

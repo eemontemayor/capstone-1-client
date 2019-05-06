@@ -74,10 +74,11 @@ class App extends Component {
   }
   findMealByDate=(x)=>{ // use this function to return a meal on day clicked if one is already stored
   
-    let mealOfDay= this.state.meals.filter( meal => meal.on_day.startsWith(x))
-    console.log(mealOfDay)
+    let MOD= this.state.meals.filter( meal => meal.on_day.startsWith(x))
+    
     this.setState({
-      mealOfDay: mealOfDay
+      mealOfDay: [...this.state.mealOfDay,
+        MOD]
     }) 
   };
 

@@ -10,8 +10,8 @@ export default class MealBrowserResults extends Component{
             let name = i.recipe.label;
             let pic = i.recipe.image;
             let ingredients= i.recipe.ingredients;
-            let instructions= i.recipe.instructions;
-            return <ResultItem  date={date} name={name} key={index} pic={pic} instructions={instructions} ingredients={ingredients}/>
+         
+            return <ResultItem  date={date} name={name} key={index} pic={pic} ingredients={ingredients}/>
             })
         return(
             <div>

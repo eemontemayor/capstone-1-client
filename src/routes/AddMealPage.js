@@ -18,8 +18,10 @@ export default class AddMealPage extends Component{
 
 
     renderMealOfDay(x){
+      
+     
      let html = x.map(i => {
-        return(`<div>${i.meal_name}</div>}`)
+        return(`<div>${i.meal_name}</div>`)
       })
       return html;
     }
@@ -64,7 +66,7 @@ export default class AddMealPage extends Component{
         const date =this.state.date
         const meals = this.context.meals
         const mealOfDay= this.context.mealOfDay
-        console.log(mealOfDay)
+       
         
    
       
