@@ -80,7 +80,7 @@ export default class AddMealPage extends Component{
       
         return(
         <div>
-          {this.renderMealOfDay(mealOfDay)} 
+          {/* {this.renderMealOfDay(mealOfDay)}  */}
             <div><AddMealForm date={date} handleSubmit={this.handleSubmit}/>
             <button onClick={this.showBrowser}>
                 Browse Meal for Ideas
