@@ -65,6 +65,7 @@ class App extends Component {
   }
 
   addMeal = (meal)=>{
+    console.log(meal)
     this.setState({
       meals:[
         ...this.state.meals,

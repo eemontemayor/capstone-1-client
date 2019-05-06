@@ -30,11 +30,12 @@ export default class ResultItem extends Component{
       //     return res.json().then(e => Promise.reject(e))
       //   return res.json()
       // })
-        .then(meal => {
-          console.log(this.context)
-          this.context.addMeal(meal)
-          // this.props.history.push(`/addMeal`)
-        })
+        // .then(meal => {
+        //   console.log(meal)
+        //   console.log(this.context) // THIS IS RETURNING UNDEFINED
+        //   this.context.addMeal(meal) 
+        //   this.props.history.push(`/addMeal`)
+        // })
       }
 
       addToCalendar=(ev)=>{ // not keeping it DRY  but will work for now
@@ -44,7 +45,7 @@ export default class ResultItem extends Component{
         for (let i=0; i<ingredients.length; i++){
          formattedIngredients.push(ingredients[i].text) 
         }
-        console.log(ingredients)
+        
       MealApiService.postMeal({
         meal_name: name,
         image: pic,
@@ -53,11 +54,12 @@ export default class ResultItem extends Component{
         bookmarked:false
        
       })
-        .then(meal => {
-          console.log(this.context)
-          this.context.addMeal(meal)
-          // this.props.history.push(`/addMeal/${date}`)
-        })
+        // .then(meal => {
+        //   console.log(meal)
+        //   console.log(this.context)
+        //   this.context.addMeal(meal)
+        //   this.props.history.push(`/addMeal/${date}`)
+        // })
       }
 
 
@@ -70,9 +72,13 @@ export default class ResultItem extends Component{
         });
       };
 
+
+
+
+
     render(){
    const{ date}=this.props
-    const ingredients= this.props.ingredients.map((i, index)=>{
+   const ingredients= this.props.ingredients.map((i, index)=>{
         return <p key={index}>{i.text}</p>
     })
     return(

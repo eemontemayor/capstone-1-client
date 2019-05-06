@@ -15,8 +15,8 @@ export default class AddMealPage extends Component{
     componentDidMount(){
       this.context.findMealByDate(this.state.date)
     }
-
-
+    
+    
     renderMealOfDay(x){
       
      
@@ -45,14 +45,11 @@ export default class AddMealPage extends Component{
         on_day: on_day, 
         bookmarked: false
       })
-      // .then(res => {
-      //   (!res.ok)
-      //     ? res.json().then(e => Promise.reject(e))
-      //     : res.json()
-      // })
-        .then(meal => {
-          this.context.addMeal(meal)
-          this.props.history.push(`/addMeal/${on_day}`)
+        .then(res => {
+          console.log([res]) // this is coming out undefined ??????
+          
+          // this.context.addMeal(meal)
+          // this.props.history.push(`/addMeal/${on_day}`)
         })
         .catch(error => {
           console.log({error})
@@ -66,7 +63,7 @@ export default class AddMealPage extends Component{
         const date =this.state.date
         const meals = this.context.meals
         const mealOfDay= this.context.mealOfDay
-       
+       console.log(mealOfDay)
         
    
       
