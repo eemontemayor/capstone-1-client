@@ -3,7 +3,7 @@ import AddMealForm from '../components/AddMealForm/AddMealForm';
 import MealBrowserForm from '../components/MealBrowserForm/MealBrowserForm';
 import MealApiService from '../services/meal-api-service';
 import ApiContext from '../context/meals-context';
-
+import MealItem from '../components/MealItem/MealItem';
 export default class AddMealPage extends Component{
     constructor(props){
       super(props)
@@ -24,8 +24,10 @@ export default class AddMealPage extends Component{
 
     renderMealOfDay(...x){
     
-     let html = x.map(i => { //TO-DO turn this into its own component and add a delete button
-        return(`${i}`)
+     let html = x.map((i, index) => { //TO-DO turn this into its own component and add a delete button
+        return(
+          <MealItem item={i} key={index}/>
+          )
       })
       return html;
     }
@@ -81,6 +83,7 @@ export default class AddMealPage extends Component{
         return(
         <div>
           {this.renderMealOfDay(...mealOfDay)} 
+          
             <div><AddMealForm date={date} handleSubmit={this.handleSubmit}/>
             <button onClick={this.showBrowser}>
                 Browse Meal for Ideas
@@ -91,7 +94,7 @@ export default class AddMealPage extends Component{
             <button>
                 View Meal Bookmarks
             </button><br/>
-            {this.state.isBrowsing && <MealBrowserForm mealOfDay={mealOfDay}date={date} addToCalDay={this.handleSubmit} />} 
+            {this.state.isBrowsing && <MealBrowserForm date={date}  />} 
            </div>
            </div> 
         )

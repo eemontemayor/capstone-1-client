@@ -55,9 +55,12 @@ class App extends Component {
     });
   }
 
-  deleteMeal=(mealId)=>{
+  deleteMeal=(x)=>{
+
+    let newMOD = this.state.mealOfDay.filter(i => i !== x) // able to filter it out but it will re-render when findMealById triggers again 
+    console.log(newMOD)
     this.setState({
-      meals:this.state.meals.filter(meal => meal.id !== mealId)
+      mealOfDay:newMOD
     })
   }
 
@@ -93,12 +96,12 @@ findMealByDate=(day)=>{
 };
 
 addToCalDay = (...meals) =>{
-  console.log(meals[0])
+  
   let modArray=[this.state.mealOfDay]
   for (let i of meals[0]){
     modArray.push(i.meal_name)
   }
-  console.log(modArray) 
+  
   this.setState({
       mealOfDay: modArray//TO-DO change this so that it will accept an array of entries once the db gets big enough
     })

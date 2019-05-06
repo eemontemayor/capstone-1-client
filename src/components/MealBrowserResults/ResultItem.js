@@ -25,17 +25,7 @@ export default class ResultItem extends Component{
         ingredients: formattedIngredients, 
         bookmarked: true
       })
-      // .then(res => {
-      //   if (!res.ok)
-      //     return res.json().then(e => Promise.reject(e))
-      //   return res.json()
-      // })
-        // .then(meal => {
-        //   console.log(meal)
-        //   console.log(this.context) // THIS IS RETURNING UNDEFINED
-        //   this.context.addMeal(meal) 
-        //   this.props.history.push(`/addMeal`)
-        // })
+ 
       }
 
       addToCalendar=(ev)=>{ // not keeping it DRY  but will work for now
