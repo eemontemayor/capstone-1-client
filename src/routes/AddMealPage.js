@@ -64,6 +64,7 @@ export default class AddMealPage extends Component{
         const date =this.state.date
         const meals = this.context.meals
         const mealOfDay= this.context.mealOfDay
+        console.log(mealOfDay)
         
    
       

@@ -88,7 +88,7 @@ class Calendar extends React.Component {
           <Link
            to={`/addMeal/${formattedDate}`} 
             className={`col cell ${ 
-              dateFns.isPast(day)
+              dateFns.isPast(day) || !dateFns.isSameMonth(day, monthStart)
                 ? "disabled" 
                 : dateFns.isSameDay(day, selectedDate) ? "selected" : "" 
             }`}                                                          

@@ -17,7 +17,7 @@ class App extends Component {
   state = { 
     hasError: false,
     mealOfDay:[],
-    meals:[], /// this will be for the bookmarks and history component
+    meals:[], 
   }
 
   static getDerivedStateFromError(error) {
@@ -37,7 +37,7 @@ class App extends Component {
          
         ])
       })
-      .then(([meals ]) => {
+      .then(([meals ]) => { //TO-DO change initial fetch so that it only returns meals that user has submitted (now the whole db)
         
         this.setState({ 
           meals:meals 
@@ -56,6 +56,12 @@ class App extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
+  }
+
+  deleteMeal=(mealId)=>{
+    this.setState({
+      meals:this.state.meals.filter(meal => meal.id !== mealId)
+    })
   }
 
   addMeal = (meal)=>{
@@ -84,6 +90,7 @@ render() {
     meals:this.state.meals,
     mealOfDay:this.state.mealOfDay,
     findMealByDate:this.findMealByDate,
+    deleteMeal: this.deleteMeal,
     addMeal: this.addMeal,
     handleChange: this.handleChange,
 

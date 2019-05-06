@@ -1,16 +1,15 @@
 import React, {Component} from 'react';
 import './ResultItem.css';
-
+import ApiContext from '../../context/meals-context';
 import MealApiService from '../../services/meal-api-service';
 
 export default class ResultItem extends Component{
   constructor(props) {
-
     super(props);
     this.state = {hidden: false};
-    
-
   }
+  static contextType = ApiContext;
+
 //TO-DO fix toggle class button for ingredients
     handleBookmarkSubmit=(ev)=>{
         ev.preventDefault()
@@ -25,16 +24,11 @@ export default class ResultItem extends Component{
         image: pic,
         ingredients: formattedIngredients, 
         bookmarked: true
-       //user_id:
       })
-        .then(res => {
-          if (!res.ok)
-            return res.json().then(e => Promise.reject(e))
-          return res.json()
-        })
         .then(meal => {
+          console.log(this.context)
           this.context.addMeal(meal)
-          this.props.history.push(`/addMeal`)
+          // this.props.history.push(`/addMeal`)
         })
       }
 
@@ -52,19 +46,18 @@ export default class ResultItem extends Component{
         ingredients: formattedIngredients, 
         on_day: date,
         bookmarked:false
-        //user_id:
        
       })
-        .then(res => {
-          if (!res.ok)
-            return res.json().then(e => Promise.reject(e))
-          return res.json()
-        })
         .then(meal => {
+          console.log(this.context)
           this.context.addMeal(meal)
-          this.props.history.push(`/addMeal/${date}`)
+          // this.props.history.push(`/addMeal/${date}`)
         })
       }
+
+
+
+
       toggleClass(){
         const currentState = this.state.hidden;
         this.setState({
