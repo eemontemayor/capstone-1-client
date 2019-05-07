@@ -26,7 +26,7 @@ export default class AddMealPage extends Component{
     
      let html = x.map((i, index) => { //TO-DO turn this into its own component and add a delete button
         return(
-          <MealItem item={i} key={index}/>
+          <MealItem item={i} key={index} itemNum={index}/>
           )
       })
       return html;

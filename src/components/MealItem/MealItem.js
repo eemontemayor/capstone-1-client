@@ -9,7 +9,7 @@ export default class MealItem extends Component{
     render(){
         const name =this.props.item
         const deleteMeal= this.context.deleteMeal
-        
+        const itemNum= this.props.itemNum
         return(
             <div>
                 <span>
