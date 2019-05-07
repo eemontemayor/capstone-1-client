@@ -31,6 +31,24 @@ const MealApiService = {
         console.log({error})
       })
     },
+    deleteMeal(x){
+      return fetch('http://localhost:8000/api/meals', {
+        method: 'DELETE',
+        headers:{
+          'content-type':'application/json',
+          'authorization':`bearer ${TokenService.getAuthToken()}`,
+        },
+        body: JSON.stringify(x)
+      })
+      .then(res => { 
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      })
+      .catch(error => {
+        console.log({error})
+      })
+    }
   
 
 };

@@ -12,6 +12,7 @@ import MealPlannerPage from '../../routes/MealPlannerPage';
 import AddMealPage from '../../routes/AddMealPage';
 import ApiContext from "../../context/meals-context";
 import config from '../../config';
+import MealApiService from '../../services/meal-api-service';
 
 class App extends Component {
   state = { 
@@ -65,6 +66,8 @@ class App extends Component {
     this.setState({
       mealOfDay:newMOD
     })
+    MealApiService.deleteMeal(x)
+
   }
 
   addMeal = (meal)=>{
