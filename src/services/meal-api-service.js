@@ -1,4 +1,4 @@
-import config from '../config';
+// import config from '../config';
 import TokenService from '../services/token-service';
 
 const MealApiService = {
@@ -34,13 +34,12 @@ const MealApiService = {
 
 
 
-    
+
     deleteMeal(meal){
       return fetch('http://localhost:8000/api/meals', { //TO-DO pass in mealId somehow to be able to delete it from db
         method: 'DELETE',
         headers:{
           'content-type':'application/json',
-          // 'authorization':`bearer ${TokenService.getAuthToken()}`,
         },
         body: JSON.stringify(meal)
       })
