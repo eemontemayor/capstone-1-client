@@ -9,14 +9,14 @@ export default class MealItem extends Component{
     render(){
         const name =this.props.item
         const deleteMeal= this.context.deleteMeal
-        const itemNum= this.props.itemNum
+        const itemNum= this.props.itemNum // need to figure out better way to mutate the array
         return(
             <div>
                 <span>
                     
                 
                     {name}
-                <button onClick={()=>deleteMeal(name)}/>
+                <button onClick={()=>deleteMeal(itemNum)}/>
                 
                     
                     </span>
