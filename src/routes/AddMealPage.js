@@ -4,6 +4,8 @@ import MealBrowserForm from '../components/MealBrowserForm/MealBrowserForm';
 import MealApiService from '../services/meal-api-service';
 import ApiContext from '../context/meals-context';
 import MealItem from '../components/MealItem/MealItem';
+
+
 export default class AddMealPage extends Component{
     constructor(props){
       super(props)
@@ -25,11 +27,11 @@ export default class AddMealPage extends Component{
     renderMealOfDay(...x){
     console.log(x)
      let html = x.map((i, index) => { //TO-DO turn this into its own component and add a delete button
-        if(i !== undefined && i.length>0 ){
+        
           return(
-            <MealItem className={i.meal_name} id ={i.id}key={index} itemNum={index}/>
+            <MealItem itemName={i.meal_name} id ={i.id}key={index} itemNum={index}/>
             )
-        }  
+        
       
       })
       return html;
@@ -79,13 +81,13 @@ export default class AddMealPage extends Component{
         const date =this.state.date
         const mealOfDay= this.context.mealOfDay
 
-        
+        console.log(mealOfDay)
       
        
       
         return(
         <div>
-          {this.renderMealOfDay(...mealOfDay)} 
+          { this.renderMealOfDay(...mealOfDay)} 
           
             <div><AddMealForm date={date} handleSubmit={this.handleSubmit}/>
             <button onClick={this.showBrowser}>

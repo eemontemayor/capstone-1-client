@@ -72,7 +72,7 @@ export default class ResultItem extends Component{
 
 
     render(){
-      console.log(this.props)
+      
    const{ date}=this.props
    const ingredients= this.props.ingredients.map((i, index)=>{
         return <p key={index}>{i.text}</p>
