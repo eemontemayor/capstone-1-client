@@ -32,7 +32,7 @@ const MealApiService = {
       })
     },
     deleteMeal(x){
-      return fetch('http://localhost:8000/api/meals', {
+      return fetch('http://localhost:8000/api/meals', { //TO-DO pass in mealId somehow to be able to delete it from db
         method: 'DELETE',
         headers:{
           'content-type':'application/json',

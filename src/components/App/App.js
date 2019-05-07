@@ -13,7 +13,7 @@ import AddMealPage from '../../routes/AddMealPage';
 import ApiContext from "../../context/meals-context";
 import config from '../../config';
 import MealApiService from '../../services/meal-api-service';
-
+import TokenService from '../../services/token-service';
 class App extends Component {
   state = { 
     hasError: false,
@@ -28,7 +28,13 @@ class App extends Component {
   }
   componentDidMount(){
     Promise.all([
-      fetch(`${config.API_ENDPOINT}/meals`),// initial fetch for landing page; 
+      fetch(`${config.API_ENDPOINT}/meals`,{
+        method:'GET',
+        headers:{
+          'content-type':'application/json',
+          'authorization':`bearer ${TokenService.getAuthToken()}`,
+        },
+      })
     ])
       .then(([mealsRes]) => {
         if (!mealsRes.ok)
@@ -38,6 +44,7 @@ class App extends Component {
         ])
       })
       .then(([meals]) => { //TO-DO change initial fetch so that it only returns meals that user has submitted (now the whole db)  
+        console.log([meals])
         this.setState({ 
           meals:meals 
         })
