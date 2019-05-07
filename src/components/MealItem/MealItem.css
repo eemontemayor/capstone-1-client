@@ -1,0 +1,10 @@
+.meal-item{
+    
+        border: .5px #000000 solid;
+       padding: 5px;
+       margin: auto;
+    
+}
+.delete-btn{
+    float:right;
+}

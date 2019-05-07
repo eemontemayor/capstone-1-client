@@ -25,9 +25,12 @@ export default class AddMealPage extends Component{
     renderMealOfDay(...x){
     
      let html = x.map((i, index) => { //TO-DO turn this into its own component and add a delete button
-        return(
-          <MealItem item={i} key={index} itemNum={index}/>
-          )
+        if(i !== undefined && i.length>0 ){
+          return(
+            <MealItem item={i} key={index} itemNum={index}/>
+            )
+        }  
+      
       })
       return html;
     }
