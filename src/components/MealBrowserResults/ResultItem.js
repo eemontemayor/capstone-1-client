@@ -13,15 +13,15 @@ export default class ResultItem extends Component{
 //TO-DO fix toggle class button for ingredients
     handleBookmarkSubmit=(ev)=>{
         ev.preventDefault()
-        const {name, ingredients, pic} = this.props
+        const {meal_name, ingredients, image} = this.props
         const formattedIngredients = []
         for (let i=0; i<ingredients.length; i++){
          formattedIngredients.push(ingredients[i].text) 
         }
         console.log(ingredients)
       MealApiService.postMeal({
-        meal_name: name,
-        image: pic,
+        meal_name: meal_name,
+        image: image,
         ingredients: formattedIngredients, 
         bookmarked: true
       })
@@ -30,15 +30,15 @@ export default class ResultItem extends Component{
 
       addToCalendar=(ev)=>{ // not keeping it DRY  but will work for now
         ev.preventDefault()
-        const {name, ingredients, pic, date} = this.props
+        const {meal_name, ingredients, image, date} = this.props
         const formattedIngredients = []
         for (let i=0; i<ingredients.length; i++){
          formattedIngredients.push(ingredients[i].text) 
         }
 
         let newMeal={
-          meal_name: name,
-          image: pic,
+          meal_name: meal_name,
+          image: image,
           ingredients: formattedIngredients, 
           on_day: date,
           bookmarked:false
@@ -47,8 +47,8 @@ export default class ResultItem extends Component{
         this.context.addToCalDay([newMeal])
  
       MealApiService.postMeal({
-        meal_name: name,
-        image: pic,
+        meal_name: meal_name,
+        image: image,
         ingredients: formattedIngredients, 
         on_day: date,
         bookmarked:false
@@ -80,15 +80,15 @@ export default class ResultItem extends Component{
     return(
        
         <div className='result-item'>
-        <h4>{this.props.name}</h4>
+        <h4>{this.props.meal_name}</h4>
         <button type="submit" onClick={this.handleBookmarkSubmit.bind(this)}>Save to my bookmarks</button><br/>
         
        
        {date && <button onClick={this.addToCalendar.bind(this)}>Add Meal to this day</button>}
         
-        <img src={this.props.pic} alt='x'/><br/>
+        <img src={this.props.image} alt='x'/><br/>
         
-        <div className={this.state.hidden ? 'hidden':null} onClick={this.toggleClass.bind(this)}><button>View Ingredients</button><br/>{ingredients}</div> 
+        <div className={this.state.hidden ? 'hidden':null} onClick={this.toggleClass.bind(this)}><button>Hide Ingredients</button><br/>{ingredients}</div> 
         </div>
     )
 

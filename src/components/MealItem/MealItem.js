@@ -8,15 +8,16 @@ export default class MealItem extends Component{
     
 
     render(){
-        const name =this.props.item
+        const meal_name =this.props.className
+        const mealId = this.props.id
         const deleteMeal= this.context.deleteMeal
-        const itemNum= this.props.itemNum // need to figure out better way to mutate the array
+       console.log(meal_name)
         return(
-            <div className='meal-item'>
+            <div className='meal-item' id={mealId}>
                 
                 
-                    {name}
-                <button className='delete-btn' onClick={()=>deleteMeal(itemNum)}>Remove</button>
+                    {meal_name}
+                <button className='delete-btn' onClick={()=>deleteMeal(mealId)}>Remove</button>
                 
                     
                     

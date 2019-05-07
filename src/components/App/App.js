@@ -43,7 +43,7 @@ class App extends Component {
           mealsRes.json(),
         ])
       })
-      .then(([meals]) => { //TO-DO change initial fetch so that it only returns meals that user has submitted (now the whole db)  
+      .then(([meals]) => { 
         console.log([meals])
         this.setState({ 
           meals:meals 
@@ -78,7 +78,6 @@ class App extends Component {
   }
 
   addMeal = (meal)=>{
-    console.log(meal)
     this.setState({
       meals:[
         ...this.state.meals,
@@ -110,11 +109,11 @@ findMealByDate=(day)=>{
 
 addToCalDay = (...meals) =>{
   
-  let modArray=[this.state.mealOfDay]
+  let modArray=this.state.mealOfDay
   for (let i of meals[0]){
-    modArray.push(i.meal_name)
+    modArray.push(i)
   }
-  
+  console.log(modArray)
   this.setState({
       mealOfDay: modArray//TO-DO change this so that it will accept an array of entries once the db gets big enough
     })

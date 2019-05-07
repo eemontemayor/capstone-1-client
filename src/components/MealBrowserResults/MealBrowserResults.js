@@ -8,11 +8,11 @@ export default class MealBrowserResults extends Component{
         
         console.log(date)
         let results= x[0].map((i, index) => { // use map to make an array of components <resultItem/>
-            let name = i.recipe.label;
-            let pic = i.recipe.image;
+            let meal_name = i.recipe.label;
+            let image = i.recipe.image;
             let ingredients= i.recipe.ingredients;
          
-            return <ResultItem  date={date} name={name} key={index} pic={pic} ingredients={ingredients} />
+            return <ResultItem  date={date} meal_name={meal_name} key={index} image={image} ingredients={ingredients} />
             })
         return(
             <div>
