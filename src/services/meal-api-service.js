@@ -31,23 +31,27 @@ const MealApiService = {
         console.log({error})
       })
     },
-    deleteMeal(x){
+
+
+
+    
+    deleteMeal(meal){
       return fetch('http://localhost:8000/api/meals', { //TO-DO pass in mealId somehow to be able to delete it from db
         method: 'DELETE',
         headers:{
           'content-type':'application/json',
-          'authorization':`bearer ${TokenService.getAuthToken()}`,
+          // 'authorization':`bearer ${TokenService.getAuthToken()}`,
         },
-        body: JSON.stringify(x)
+        body: JSON.stringify(meal)
       })
-      .then(res => { 
-        (!res.ok)
-          ? res.json().then(e => Promise.reject(e))
-          : res.json()
-      })
-      .catch(error => {
-        console.log({error})
-      })
+      // .then(res => { 
+      //   (!res.ok)
+      //     ? res.json().then(e => Promise.reject(e))
+      //     : res.json()
+      // })
+      // .catch(error => {
+      //   console.log({error})
+      // })
     }
   
 

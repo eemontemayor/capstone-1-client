@@ -63,17 +63,15 @@ class App extends Component {
     });
   }
 
-  deleteMeal=(x)=>{
-    console.log(x)
+  deleteMeal=(meal)=>{
+    console.log(meal)
+    
     let newMOD = this.state.mealOfDay
-    console.log(newMOD)
-    delete newMOD[x] //still renders button
-    // let newMOD = this.state.mealOfDay.filter(i => i !== x) // able to filter it out but it will re-render when findMealById triggers again 
-    console.log(newMOD)                                 // need to fix this with something that will not filter out all entries that match
+    MealApiService.deleteMeal(meal)
+                               
     this.setState({
       mealOfDay:newMOD
     })
-    MealApiService.deleteMeal(x)
 
   }
 

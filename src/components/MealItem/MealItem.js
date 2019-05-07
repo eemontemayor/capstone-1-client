@@ -8,16 +8,22 @@ export default class MealItem extends Component{
     
 
     render(){
-        const meal_name =this.props.itemName
+        const meal_name =this.props.meal_name
         const mealId = this.props.id
         const deleteMeal= this.context.deleteMeal
-       console.log(this.props)
+
+        const meal={
+            meal_name: this.props.meal_name,
+            id: this.props.id,
+        }
+
+
         return(
             <div className='meal-item' id={mealId}>
                 
                 
                     {meal_name}
-                <button className='delete-btn' onClick={()=>deleteMeal(mealId)}>Remove</button>
+                <button className='delete-btn' onClick={()=>deleteMeal(meal)}>Remove</button>
                 
                     
                     
