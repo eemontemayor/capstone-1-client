@@ -73,6 +73,9 @@ class App extends Component {
     
     let newMOD = this.state.mealOfDay
     MealApiService.deleteMeal(meal)
+    .then(res =>{
+      console.log(res)
+    })
     // if res.ok
     delete newMOD[mealNum]
 
@@ -116,7 +119,6 @@ addToCalDay = (...meals) =>{
   for (let i of meals[0]){
     modArray.push(i)
   }
-  console.log(modArray)
   this.setState({
       mealOfDay: modArray//TO-DO change this so that it will accept an array of entries once the db gets big enough
     })

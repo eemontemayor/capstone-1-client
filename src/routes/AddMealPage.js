@@ -70,6 +70,9 @@ export default class AddMealPage extends Component{
         on_day: on_day, 
         bookmarked: false
       })
+      .then(res =>{
+        console.log(res)
+      })
   
 
      
@@ -85,7 +88,7 @@ export default class AddMealPage extends Component{
         const date =this.state.date
         const mealOfDay= this.context.mealOfDay
 
-        console.log(mealOfDay)
+        
       
        
       
