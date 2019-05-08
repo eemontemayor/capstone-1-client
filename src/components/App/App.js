@@ -14,6 +14,8 @@ import ApiContext from "../../context/meals-context";
 import config from '../../config';
 import MealApiService from '../../services/meal-api-service';
 import TokenService from '../../services/token-service';
+
+
 class App extends Component {
   state = { 
     hasError: false,
@@ -63,12 +65,14 @@ class App extends Component {
     });
   }
 
-  deleteMeal=(meal)=>{
+  deleteMeal=(meal, mealNum)=>{
     console.log(meal)
     
     let newMOD = this.state.mealOfDay
     MealApiService.deleteMeal(meal)
-                               
+    // if res.ok
+    delete newMOD[mealNum]
+
     this.setState({
       mealOfDay:newMOD
     })
@@ -98,7 +102,7 @@ findMealByDate=(day)=>{
   if(this.state.meals.length !== null){
     let MOD = []
     let meals=this.state.meals
-    MOD = meals.filter(i => i.on_day.startsWith(day)) // hadn't realized my server was returning an array from db
+    MOD = meals.filter(i => i.on_day.startsWith(day)) //TO-DO adding boomarks breaks this function because those don't have on_day prop
     this.addToCalDay(MOD)
   } else{
     return console.log('here')

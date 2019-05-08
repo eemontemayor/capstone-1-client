@@ -11,7 +11,8 @@ export default class MealItem extends Component{
         const meal_name =this.props.meal_name
         const mealId = this.props.id
         const deleteMeal= this.context.deleteMeal
-
+        const mealNum = this.props.mealNum
+        console.log(mealNum)
         const meal={
             meal_name: this.props.meal_name,
             id: this.props.id,
@@ -23,7 +24,7 @@ export default class MealItem extends Component{
                 
                 
                     {meal_name}
-                <button className='delete-btn' onClick={()=>deleteMeal(meal)}>Remove</button>
+                <button className='delete-btn' onClick={()=>deleteMeal(meal, mealNum)}>Remove</button>
                 
                     
                     

@@ -18,7 +18,7 @@ export default class AddMealPage extends Component{
     static contextType = ApiContext
 
     componentDidMount(){
-      
+      //TO-DO findMealById should go here
     }
     
   
@@ -26,14 +26,14 @@ export default class AddMealPage extends Component{
 
     renderMealOfDay(...x){
   
-     let html = x.map((i, index) => { //TO-DO turn this into its own component and add a delete button
+     let html = x.map((i, index) => { 
       if(i !== undefined){
         return(
-          <MealItem meal_name={i.meal_name} id ={i.id}key={index} /> 
+          <MealItem meal_name={i.meal_name} id ={i.id}key={index} mealNum={index}/> 
           )
           
         }
-        return null // broke this
+        return null 
         
       
       })
