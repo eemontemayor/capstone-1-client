@@ -18,9 +18,9 @@ export default class HomePage extends Component {
     render(){
         return (
             <div>
-                <Link to='/mealBrowser' className='home-btn-browser' >Explore New Meals</Link><br/>    
+                <Link to='/mealBrowser' className='home-btn-browser' >EXPLORE NEW MEALS</Link><br/>    
                   
-                <Link to='/mealPlanner'  className='home-btn-planner' >Plan your meals</Link>
+                <Link to='/mealPlanner'  className='home-btn-planner' >PLAN YOUR MEALS</Link>
             </div>
         )
     }

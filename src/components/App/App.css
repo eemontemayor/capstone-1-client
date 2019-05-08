@@ -1,5 +1,5 @@
 header{
-    background-color: rgba(251, 251, 251, 0.411);
+    background-color: rgb(255, 255, 255);
     
   }
   .App__body{
@@ -9,7 +9,7 @@ header{
     bottom: 0;
     right: 0;
     overflow: auto;
-    background: white; 
+    background: rgb(228, 227, 227); 
 }
 .App__main{
     background:white
@@ -34,17 +34,20 @@ header{
     margin-left:15px;
 }
 .home-btn-browser{
-    margin: 50px;
+    
     padding: 20px;
-    border: 5px solid pink;
+    border: 5px solid red;
     text-decoration: none;
-
+    text-align: center;
     display:block;
+    color: black;
 }
 .home-btn-planner{
-    margin: 40px;
+    
     padding: 20px;
-    border: 5px solid yellow;
+    border: 5px solid blue;
     text-decoration: none;
+    text-align: center;
+    color: black;
     display:block;
 }
