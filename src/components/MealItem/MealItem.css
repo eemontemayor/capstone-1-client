@@ -1,9 +1,11 @@
 .meal-item{
     
         border: .5px #000000 solid;
-       padding: 5px;
+       padding: 7px;
        margin: auto;
-    
+        background-color: aliceblue;
+        margin-bottom: 3px;
+        
 }
 .delete-btn{
     float:right;

@@ -14,6 +14,7 @@ import ApiContext from "../../context/meals-context";
 import config from '../../config';
 import MealApiService from '../../services/meal-api-service';
 import TokenService from '../../services/token-service';
+import './App.css';
 
 
 class App extends Component {

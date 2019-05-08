@@ -3,14 +3,15 @@
     display: flex;
     align-items: normal;
     justify-content: space-between;
+   
   }
   
   .Header h1 {
     margin: 0;
   }
-  
+
   .Header a {
-    color: #444;
+    color: rgb(190, 12, 12);
     text-decoration: none;
   }
   
@@ -43,9 +44,10 @@
   }
   
   .Header__logged-in a {
-    border: 1px solid rgba(0, 0, 0, 0.25);
+    border: 2px solid rgba(0, 0, 0, 0.25);
     padding: 5px 15px;
     border-radius: 15px;
+    background-color:whitesmoke;
   }
   
   @media screen and (min-width: 450px) {
