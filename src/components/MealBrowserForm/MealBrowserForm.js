@@ -42,7 +42,7 @@ handleSubmit = e => {
       const {searchResults} = this.state
      
         return(
-            <div>
+            <div className='browser_form'>
             <form onSubmit={this.handleSubmit}
             className='BrowserForm'>           
             <div className='searchTerm'onChange={this.handleChange.bind(this)}>

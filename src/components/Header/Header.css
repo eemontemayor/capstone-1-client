@@ -41,6 +41,7 @@
     padding: 5px 15px;
     border-radius: 15px;
     margin-left: 10px;
+    margin-right:15px;
   }
   
   .Header__logged-in a {
@@ -48,6 +49,7 @@
     padding: 5px 15px;
     border-radius: 15px;
     background-color:whitesmoke;
+    margin-right:15px;
   }
   
   @media screen and (min-width: 450px) {
