@@ -93,14 +93,17 @@ export default class AddMealPage extends Component{
         <div>
           { this.renderMealOfDay(...mealOfDay)} 
           
-            <div><AddMealForm date={date} handleSubmit={this.handleSubmit}/>
-            <button onClick={this.showBrowser}>
+            <div className='add_meal_form'>
+              <AddMealForm date={date} handleSubmit={this.handleSubmit}/>
+              </div>
+             <div className='alt-comp'> 
+            <button className='add_meal_btn' onClick={this.showBrowser}>
                 Browse Meal for Ideas
             </button>
-            <button>
+            <button className='add_meal_btn'>
               View Meal History
             </button>
-            <button>
+            <button className='add_meal_btn'>
                 View Meal Bookmarks
             </button><br/>
             {this.state.isBrowsing && <MealBrowserForm date={date}  />} 

@@ -1,6 +1,7 @@
 .meal-item{
     
         border: .5px #000000 solid;
+        border-radius: 5px;
        padding: 7px;
        margin: auto;
         background-color: aliceblue;

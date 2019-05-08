@@ -148,6 +148,7 @@ render() {
   }
   
     return (
+      <div className= 'App__body'>
       <ApiContext.Provider value={value}>
       <div className='App'>
         <header className='App__header'>
@@ -188,6 +189,7 @@ render() {
         </main>
       </div>
       </ApiContext.Provider>
+      </div>
     );
   }
 }
