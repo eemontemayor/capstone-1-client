@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import LoginForm from '../components/LoginForm/LoginForm'
 import { Section } from '../components/Utils/Utils'
-
+import ApiContext from '../context/meals-context'
 export default class LoginPage extends Component {
   static defaultProps = {
     location: {},
@@ -9,11 +9,13 @@ export default class LoginPage extends Component {
       push: () => {},
     },
   }
+  static contextType= ApiContext
 
   handleLoginSuccess = () => {
     const { location, history } = this.props
     const destination = (location.state || {}).from || '/'
     history.push(destination)
+    this.context.changeLogStatus()
 
   }
 

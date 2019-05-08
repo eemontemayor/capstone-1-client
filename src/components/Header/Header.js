@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
+import ApiContext from '../../context/meals-context';
 import TokenService from '../../services/token-service';
 import './Header.css';
 
 export default class Header extends Component {
+  static contextType = ApiContext
   handleLogoutClick = () => {
+    this.context.changeLogStatus();
     TokenService.clearAuthToken();
    
   }

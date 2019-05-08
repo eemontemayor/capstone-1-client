@@ -22,6 +22,7 @@ class App extends Component {
     meals:[], 
     mealOfDay:[],
     selectedDay:null,
+    isLoggedIn:false,
   
   }
 
@@ -120,6 +121,12 @@ addToCalDay = (...meals) =>{
     })
   }
 
+  changeLogStatus=()=>{
+    this.setState({
+      isLoggedIn: !this.state.isLoggedIn
+    })
+  }
+
 
 
 
@@ -134,6 +141,8 @@ render() {
     selectedDay:this.state.selectedDay,
     findMealByDate:this.findMealByDate,
     onDateClick:this.onDateClick,
+    isLoggedIn:this.state.isLoggedIn,
+    changeLogStatus:this.changeLogStatus,
     
   }
   
