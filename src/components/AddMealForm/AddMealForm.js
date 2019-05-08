@@ -35,7 +35,7 @@ class AddMealForm extends Component{
               <Input
                 type="text"
                 name='meal_name'
-                onChange={handleChange.bind(this)}
+                // onChange={handleChange.bind(this)}
                 required
                 >
               </Input>

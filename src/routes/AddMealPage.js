@@ -17,7 +17,7 @@ export default class AddMealPage extends Component{
     }
     static contextType = ApiContext
 
-    componentDidMount(){
+    componentWillMount(){
       //TO-DO findMealById should go here
       this.context.findMealByDate(this.state.date)
     }
@@ -32,14 +32,13 @@ export default class AddMealPage extends Component{
         return(
           <MealItem meal_name={i.meal_name} id ={i.id}key={index} mealNum={index}/> 
           )
-          
         }
         return null 
-        
-      
       })
       return html;
     }
+
+
 
     showBrowser = e =>{
         this.setState({
@@ -70,14 +69,11 @@ export default class AddMealPage extends Component{
         on_day: on_day, 
         bookmarked: false
       })
-      .then(res =>{
+      .then(res =>{ // trying to get mealId from database from response 
         console.log(res)
       })
-  
-
-     
-        .catch(error => {
-          console.log({error})
+      .catch(error => {
+        console.log({error})
         })
       }
     

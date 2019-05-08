@@ -12,6 +12,9 @@ const MealApiService = {
             : res.json()
         );
     },
+
+
+
     postMeal(x){
       return fetch('http://localhost:8000/api/meals',{ //TO-DO hide these endpoints in config/env files
         method: 'POST',
@@ -23,7 +26,7 @@ const MealApiService = {
 
       })
       .then(res => { 
-        console.log("HERE");
+        console.log(res);
         (!res.ok)
           ? res.json().then(e => Promise.reject(e))
           : res.json()

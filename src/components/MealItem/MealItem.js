@@ -17,7 +17,7 @@ export default class MealItem extends Component{
             meal_name: this.props.meal_name,
             id: this.props.id,
         }
-
+        console.log(meal)
 
         return(
             <div className='meal-item' id={mealId}>
