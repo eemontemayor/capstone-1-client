@@ -19,6 +19,7 @@ export default class AddMealPage extends Component{
 
     componentDidMount(){
       //TO-DO findMealById should go here
+      this.context.findMealByDate(this.state.date)
     }
     
   

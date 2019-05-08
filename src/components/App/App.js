@@ -22,6 +22,7 @@ class App extends Component {
     meals:[], 
     mealOfDay:[],
     selectedDay:null,
+  
   }
 
   static getDerivedStateFromError(error) {
@@ -57,7 +58,7 @@ class App extends Component {
   }
   
 
-  
+ 
 
   handleChange = (e) => {
     this.setState({
@@ -92,9 +93,7 @@ class App extends Component {
     this.setState({
      selectedDate: day,
      mealOfDay:[],
- }, ()=>{
-    this.findMealByDate(day)
- });
+    });
 };
 
 findMealByDate=(day)=>{
@@ -134,7 +133,8 @@ render() {
     handleChange: this.handleChange,
     selectedDay:this.state.selectedDay,
     findMealByDate:this.findMealByDate,
-    onDateClick:this.onDateClick
+    onDateClick:this.onDateClick,
+    
   }
   
     return (

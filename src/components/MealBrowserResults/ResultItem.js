@@ -10,7 +10,7 @@ export default class ResultItem extends Component{
   }
   static contextType = ApiContext;
 
-//TO-DO fix toggle class button for ingredients
+
     handleBookmarkSubmit=(ev)=>{
         ev.preventDefault()
         const {meal_name, ingredients, image} = this.props
