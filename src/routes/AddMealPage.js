@@ -4,6 +4,7 @@ import MealBrowserForm from '../components/MealBrowserForm/MealBrowserForm';
 import MealApiService from '../services/meal-api-service';
 import ApiContext from '../context/meals-context';
 import MealItem from '../components/MealItem/MealItem';
+import Bookmarks from '../components/Bookmarks/Bookmarks';
 // import TokenService from '../services/token-service';
 // import config from '../config';
 
@@ -14,7 +15,7 @@ export default class AddMealPage extends Component{
             isBrowsing:false,
             date:this.props.match.params.date,
             MOD:[],
-      
+            viewingBookmarks:false,
         }
     }
     static contextType = ApiContext
@@ -45,8 +46,14 @@ export default class AddMealPage extends Component{
 
     showBrowser = e =>{
         this.setState({
-            isBrowsing:true,
+            isBrowsing:!this.state.isBrowsing,
         })
+    }
+    showBookmarks = e =>{
+     
+      this.setState({
+        viewingBookmarks:!this.state.viewingBookmarks,
+      })
     }
 
 
@@ -106,16 +113,17 @@ export default class AddMealPage extends Component{
               <AddMealForm date={date} handleSubmit={this.handleSubmit}/>
               </div>
              <div className='alt-comp'> 
-            <button className='add_meal_btn' onClick={this.showBrowser}>
-                Browse Meal for Ideas
-            </button>
             <button className='add_meal_btn'>
               View Meal History
             </button>
-            <button className='add_meal_btn'>
+            <button className='add_meal_btn' onClick={this.showBookmarks}>
                 View Meal Bookmarks
+            </button>
+            <button className='add_meal_btn' onClick={this.showBrowser}>
+                Browse Meal for Ideas
             </button><br/>
             {this.state.isBrowsing && <MealBrowserForm date={date}  />} 
+            {this.state.viewingBookmarks && <Bookmarks date={date}/>}
            </div>
            </div> 
         )
@@ -125,5 +133,5 @@ export default class AddMealPage extends Component{
 
 
 // must have a back button
-// must have access to history, bookmark, and browser component
+
 
