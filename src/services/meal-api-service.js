@@ -29,7 +29,7 @@ const MealApiService = {
         console.log(res);
         (!res.ok)
           ? res.json().then(e => Promise.reject(e))
-          : res.json()
+          : res.json().then(r => Promise.resolve(r))
       })
       .catch(error => {
         console.log({error})

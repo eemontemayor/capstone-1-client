@@ -75,7 +75,8 @@ class App extends Component {
       
       delete newMOD[mealNum]
       this.setState({
-        mealOfDay:newMOD
+        mealOfDay:newMOD // since it never gets deleted from db, this item will actually re-render after refresh
+                            //and i can delete it then.... not working...
       })
     } else{
 
@@ -87,13 +88,14 @@ class App extends Component {
     .then(res =>{
       console.log(res)
       delete newMOD[mealNum]
+      this.setState({
+        mealOfDay:newMOD
+      })
     })
     
     
 
-    this.setState({
-      mealOfDay:newMOD
-    })
+   
   }
   }
 
@@ -123,6 +125,7 @@ class App extends Component {
     });
 };
 
+
 findMealByDate=(day)=>{
 
   if(this.state.meals.length !== null){
@@ -147,6 +150,9 @@ addToCalDay = (...meals) =>{
       mealOfDay: modArray//TO-DO change this so that it will accept an array of entries once the db gets big enough
     })
   }
+
+
+
 
   changeLogStatus=()=>{
     this.setState({
