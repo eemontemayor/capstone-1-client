@@ -47,12 +47,14 @@ export default class AddMealPage extends Component{
     showBrowser = e =>{
         this.setState({
             isBrowsing:!this.state.isBrowsing,
+            viewingBookmarks:false,
         })
     }
     showBookmarks = e =>{
      
       this.setState({
         viewingBookmarks:!this.state.viewingBookmarks,
+        isBrowsing:false,
       })
     }
 

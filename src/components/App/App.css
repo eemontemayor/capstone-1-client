@@ -9,7 +9,7 @@ header{
     bottom: 0;
     right: 0;
     overflow: auto;
-    background: rgba(255, 121, 121, 0.575);
+    background: rgba(147, 95, 243, 0.575);
 }
 .App__main{
     background:white;
@@ -94,7 +94,7 @@ header{
 
 .home-page-div{
     padding:100px;
-   background-color: aqua;
+   background-color: rgba(0, 255, 255, 0.767);
    display:block;
 }
 
