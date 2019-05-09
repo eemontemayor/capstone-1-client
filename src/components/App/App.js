@@ -69,19 +69,32 @@ class App extends Component {
   }
 
   deleteMeal=(meal, mealNum)=>{
-    console.log(meal)
     let newMOD = this.state.mealOfDay
+
+    if(meal.id === undefined){
+      
+      delete newMOD[mealNum]
+      this.setState({
+        mealOfDay:newMOD
+      })
+    } else{
+
+    
+    console.log(meal)
+
+
     MealApiService.deleteMeal(meal)
     .then(res =>{
       console.log(res)
+      delete newMOD[mealNum]
     })
     
-    delete newMOD[mealNum]
+    
 
     this.setState({
       mealOfDay:newMOD
     })
-
+  }
   }
 
 
