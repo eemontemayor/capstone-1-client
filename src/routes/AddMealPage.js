@@ -63,16 +63,21 @@ export default class AddMealPage extends Component{
         }
 
 
-
-      MealApiService.postMeal({
-        meal_name: meal_name.value,
-        ingredients: ingredients.value,
-        on_day: on_day, 
-        bookmarked: false
-      })
-      .then(res =>{ // trying to get mealId from database from response // or somehow trying to get it to re-render with newMeal id as well
-        this.context.addMeal(newMeal)
-        this.context.findMealByDate(this.state.date)
+        
+        
+        MealApiService.postMeal({
+          meal_name: meal_name.value,
+          ingredients: ingredients.value,
+          on_day: on_day, 
+          bookmarked: false
+        })
+        .then(res =>{ // trying to get mealId from database from response // or somehow trying to get it to re-render with newMeal id as well
+          console.log(res);
+          
+          
+          this.context.addMeal(newMeal)
+          // this.context.findMealByDate(this.state.date)
+          this.context.addToCalDay([newMeal])
         this.setState({
           MOD:this.context.mealOfDay
         })
