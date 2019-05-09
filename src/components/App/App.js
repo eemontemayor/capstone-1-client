@@ -70,13 +70,12 @@ class App extends Component {
 
   deleteMeal=(meal, mealNum)=>{
     console.log(meal)
-    
     let newMOD = this.state.mealOfDay
     MealApiService.deleteMeal(meal)
     .then(res =>{
       console.log(res)
     })
-    // if res.ok
+    
     delete newMOD[mealNum]
 
     this.setState({
@@ -84,6 +83,9 @@ class App extends Component {
     })
 
   }
+
+
+
 
   addMeal = (meal)=>{
     this.setState({
@@ -93,6 +95,13 @@ class App extends Component {
       ]
     })
   }
+
+  addAllMeals= (meals)=>{
+    this.setState({
+      meals:meals
+    })
+  }
+
 
   onDateClick = day => { 
     this.setState({
@@ -146,7 +155,7 @@ render() {
     onDateClick:this.onDateClick,
     isLoggedIn:this.state.isLoggedIn,
     changeLogStatus:this.changeLogStatus,
-    
+    addAllMeals:this.addAllMeals,
   }
   
     return (

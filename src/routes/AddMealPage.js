@@ -4,7 +4,8 @@ import MealBrowserForm from '../components/MealBrowserForm/MealBrowserForm';
 import MealApiService from '../services/meal-api-service';
 import ApiContext from '../context/meals-context';
 import MealItem from '../components/MealItem/MealItem';
-
+import TokenService from '../services/token-service';
+import config from '../config';
 
 export default class AddMealPage extends Component{
     constructor(props){
@@ -12,6 +13,7 @@ export default class AddMealPage extends Component{
       this.state={
             isBrowsing:false,
             date:this.props.match.params.date,
+            MOD:[],
       
         }
     }
@@ -20,6 +22,7 @@ export default class AddMealPage extends Component{
     componentWillMount(){
       //TO-DO findMealById should go here
       this.context.findMealByDate(this.state.date)
+  
     }
     
   
@@ -59,9 +62,7 @@ export default class AddMealPage extends Component{
           bookmarked: false
         }
 
-      this.context.addMeal(newMeal)
 
-      this.context.addToCalDay([newMeal])
 
       MealApiService.postMeal({
         meal_name: meal_name.value,
@@ -69,8 +70,12 @@ export default class AddMealPage extends Component{
         on_day: on_day, 
         bookmarked: false
       })
-      .then(res =>{ // trying to get mealId from database from response 
-        console.log(res)
+      .then(res =>{ // trying to get mealId from database from response // or somehow trying to get it to re-render with newMeal id as well
+        this.context.addMeal(newMeal)
+        this.context.findMealByDate(this.state.date)
+        this.setState({
+          MOD:this.context.mealOfDay
+        })
       })
       .catch(error => {
         console.log({error})
@@ -78,11 +83,11 @@ export default class AddMealPage extends Component{
       }
     
 
-
+   
 
     render(){
         const date =this.state.date
-        const mealOfDay= this.context.mealOfDay
+        const mealOfDay= this.state.MOD
 
         
       
