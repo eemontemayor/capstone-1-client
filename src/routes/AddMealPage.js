@@ -106,7 +106,7 @@ export default class AddMealPage extends Component{
        
       
         return(
-        <div>
+        <div className='add-meal-form'>
           { this.renderMealOfDay(...mealOfDay)} 
           
             <div className='add_meal_form'>

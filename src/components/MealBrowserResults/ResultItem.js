@@ -80,13 +80,11 @@ export default class ResultItem extends Component{
     return(
        
         <div className='result-item'>
-        <h4>{this.props.meal_name}</h4>
+        <h4 className='result-item-name'>{this.props.meal_name}</h4>
+       <div className='result-item-btn'>{date && <button className='result-item-cal-btn'onClick={this.addToCalendar.bind(this)}>Add Meal to this day</button>}
         <button type="submit" onClick={this.handleBookmarkSubmit.bind(this)}>Save to my bookmarks</button><br/>
-        
-       
-       {date && <button onClick={this.addToCalendar.bind(this)}>Add Meal to this day</button>}
-        
-        <img src={this.props.image} alt='x'/><br/>
+        </div>
+        <img className='result-item-image' src={this.props.image} alt='x'/><br/>
         
         <div className={this.state.hidden ? 'hidden':null} onClick={this.toggleClass.bind(this)}><button>Hide Ingredients</button><br/>{ingredients}</div> 
         </div>

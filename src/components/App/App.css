@@ -1,5 +1,5 @@
 header{
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(58, 57, 57, 0.883);
     
   }
   .App__body{
@@ -9,12 +9,12 @@ header{
     bottom: 0;
     right: 0;
     overflow: auto;
-    background: rgb(255, 255, 255); 
+    background: rgba(255, 121, 121, 0.575);
 }
 .App__main{
     background:white;
     margin-bottom:80px;
-
+   
 }
 
 .add_meal_form{
@@ -23,9 +23,14 @@ header{
     margin-right:10px;
     margin-bottom:30px;
     padding:20px;
+    font-weight: 600;
 
 }
-
+.add-meal-form{
+    border:1px solid black;
+    padding-bottom:10px;
+    
+}
 .add_meal_btn{
     
     margin-bottom:20px;
@@ -35,20 +40,27 @@ header{
 .home-btn-browser{
     
     padding: 20px;
-    border: 5px solid red;
-    text-decoration: none;
+    border: 5px solid  rgb(58, 57, 57);
+        text-decoration: none;
     text-align: center;
     display:block;
-    color: black;
+    color: white;
+    font-weight: bold;
+    background-color: rgba(19, 77, 19, 0.664);
+    max-width: 60%;
+    margin: auto;
 }
 .home-btn-planner{
-    
+    background-color: #0F4880;
     padding: 20px;
-    border: 5px solid blue;
+    border: 5px solid  rgb(58, 57, 57);
     text-decoration: none;
     text-align: center;
-    color: black;
+    color: white;
     display:block;
+    font-weight: bold;
+    max-width: 60%;
+    margin: auto;
 }
 
 .browser_form{
@@ -57,4 +69,40 @@ header{
     margin-right:10px;
     margin-bottom:30px;
     padding:20px;
+}
+
+.result-item-image{
+   margin-top:30px;
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+   width: 50%;
+}
+.result-item-name{
+    text-align: center;
+    text-decoration: underline;
+    font-size: 20px;
+}
+.result-item-btn{
+    margin-top:30px;
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+  padding:10px;
+  width: fit-content;
+}
+
+.home-page-div{
+    padding:100px;
+   background-color: aqua;
+   display:block;
+}
+
+.LoginPage{
+    border: 1px solid black;
+    padding: 20px;
+}
+.RegistrationPage{
+    border: 1px solid black;
+    padding: 20px;
 }

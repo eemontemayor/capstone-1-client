@@ -44,7 +44,7 @@ export default class Header extends Component {
       <nav className='Header'>
         <h1>
           <Link to='/'>
-            The Meal Deal
+              THE  MEAL  DEAL
           </Link>
         </h1>
         <span className='Header__tagline--wide'>Placeholdere</span>
