@@ -4,8 +4,8 @@ import MealBrowserForm from '../components/MealBrowserForm/MealBrowserForm';
 import MealApiService from '../services/meal-api-service';
 import ApiContext from '../context/meals-context';
 import MealItem from '../components/MealItem/MealItem';
-import TokenService from '../services/token-service';
-import config from '../config';
+// import TokenService from '../services/token-service';
+// import config from '../config';
 
 export default class AddMealPage extends Component{
     constructor(props){
@@ -87,8 +87,8 @@ export default class AddMealPage extends Component{
 
     render(){
         const date =this.state.date
-        const mealOfDay= this.state.MOD
-
+        // const mealOfDay= this.state.MOD
+        const mealOfDay= this.context.mealOfDay
         
       
        
