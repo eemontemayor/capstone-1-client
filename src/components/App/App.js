@@ -115,7 +115,9 @@ findMealByDate=(day)=>{
   if(this.state.meals.length !== null){
     let MOD = []
     let meals=this.state.meals
-    MOD = meals.filter(i => i.on_day.startsWith(day)) //TO-DO adding boomarks breaks this function because those don't have on_day prop
+
+    MOD = meals.filter(i => {
+      return i.on_day !== null && i.on_day.startsWith(day)}) 
     this.addToCalDay(MOD)
   } else{
     return console.log('here')

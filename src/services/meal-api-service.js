@@ -26,7 +26,7 @@ const MealApiService = {
 
       })
       .then(res => { 
-        console.log(res.data);
+        console.log(res);
         (!res.ok)
           ? res.json().then(e => Promise.reject(e))
           : res.json()
@@ -40,7 +40,7 @@ const MealApiService = {
 
 
     deleteMeal(meal){
-      return fetch('http://localhost:8000/api/meals', { //TO-DO pass in mealId somehow to be able to delete it from db
+      return fetch('http://localhost:8000/api/meals', { 
         method: 'DELETE',
         headers:{
           'content-type':'application/json',

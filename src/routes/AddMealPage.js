@@ -22,9 +22,9 @@ export default class AddMealPage extends Component{
     componentWillMount(){
       //TO-DO findMealById should go here
       this.context.findMealByDate(this.state.date)
-  
+      
     }
-    
+   
   
 
 
@@ -64,6 +64,8 @@ export default class AddMealPage extends Component{
 
 
         
+
+        
         
         MealApiService.postMeal({
           meal_name: meal_name.value,
@@ -71,11 +73,9 @@ export default class AddMealPage extends Component{
           on_day: on_day, 
           bookmarked: false
         })
-        .then(res =>{ // trying to get mealId from database from response // or somehow trying to get it to re-render with newMeal id as well
-          console.log(res);
-          
-          
-          this.context.addMeal(newMeal)
+        .then(res =>{ 
+          console.log(res);   // why can't I send data back from the server if it is not a 204? trying to get mealId from newly posted meal
+          this.context.addMeal(newMeal) 
           // this.context.findMealByDate(this.state.date)
           this.context.addToCalDay([newMeal])
         this.setState({
