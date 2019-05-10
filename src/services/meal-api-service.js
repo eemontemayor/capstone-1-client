@@ -34,7 +34,7 @@ const MealApiService = {
 
 
     postMeal(x){
-      return fetch(`${config.API_ENDPOINT}/api/meals`,{ //TO-DO hide these endpoints in config/env files
+      return fetch(`${config.API_ENDPOINT}/meals`,{ //TO-DO hide these endpoints in config/env files
         method: 'POST',
         headers:{
           'content-type':'application/json',
@@ -58,7 +58,7 @@ const MealApiService = {
 
 
     deleteMeal(meal){
-      return fetch(`${config.API_ENDPOINT}/api/meals`, { 
+      return fetch(`${config.API_ENDPOINT}/meals`, { 
         method: 'DELETE',
         headers:{
           'content-type':'application/json',
