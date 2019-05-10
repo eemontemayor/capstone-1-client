@@ -7,10 +7,15 @@
     
 
 ### screenshots
-<div >
-    <img src="./appPics/calendar.png" width="100px"/> 
+<div align='center'>
+    <img src="./appPics/calendar.png" width="300px"/> 
 </div>
-
+<div align='center'>
+    <img src="./appPics/browseMeals.png" width="300px"/> 
+</div>
+<div align='center'>
+    <img src="./appPics/addMeal.png" width="300px"/> 
+</div>
 
 
 ### summary
