@@ -3,8 +3,8 @@
 ### link 
     https://eemontemayor-meal-planner-app.now.sh/
 
+### API documentation
 
-    
 
 ### screenshots
 <div align='center'>
@@ -26,6 +26,13 @@
     After clicking on a day, the user can either add their own 
         meals to that day or browse meals from 'edamam' and add the
              meal to that particular day.
+
+
+
+### features to be added
+
+
+
 
 ### technologies
     This app utilizes HTML, CSS, React, Node, Express, and PostgreSQL
