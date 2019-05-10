@@ -8,13 +8,13 @@
 
 ### screenshots
 <div align='center'>
-    <img src="./appPics/calendar.png" width="300px"/> 
+    <img src="./appPics/calendar.png" width="400px"/> 
 </div>
 <div align='center'>
-    <img src="./appPics/browseMeals.png" width="300px"/> 
+    <img src="./appPics/browseMeals.png" width="400px"/> 
 </div>
 <div align='center'>
-    <img src="./appPics/addMeal.png" width="300px"/> 
+    <img src="./appPics/addMeal.png" width="400px"/> 
 </div>
 
 
