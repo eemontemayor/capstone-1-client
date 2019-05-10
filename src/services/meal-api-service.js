@@ -3,7 +3,7 @@ import TokenService from '../services/token-service';
 
 const MealApiService = {
   getBrowserMeals(x) {
-      return fetch(`https://api.edamam.com/search?q=${x}&app_id=108438ee&app_key=9fa106c05de3b6d9c71df9aecbab94e6`, { 
+      return fetch(`https://api.edamam.com/search?q=${x}&app_id=${config.APP_ID}&app_key=${config.API_KEY}`, { 
       
       })
         .then(res =>
@@ -34,7 +34,7 @@ const MealApiService = {
 
 
     postMeal(x){
-      return fetch('http://localhost:8000/api/meals',{ //TO-DO hide these endpoints in config/env files
+      return fetch(`${config.API_ENDPOINT}/api/meals`,{ //TO-DO hide these endpoints in config/env files
         method: 'POST',
         headers:{
           'content-type':'application/json',
@@ -58,7 +58,7 @@ const MealApiService = {
 
 
     deleteMeal(meal){
-      return fetch('http://localhost:8000/api/meals', { 
+      return fetch(`${config.API_ENDPOINT}/api/meals`, { 
         method: 'DELETE',
         headers:{
           'content-type':'application/json',
