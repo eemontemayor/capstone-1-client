@@ -14,55 +14,66 @@ export default class AddMealPage extends Component{
       this.state={
             isBrowsing:false,
             date:this.props.match.params.date,
+            meals:[],
             MOD:[],
             viewingBookmarks:false,
         }
     }
     static contextType = ApiContext
 
-    componentWillMount(){
-      //TO-DO findMealById should go here
-      this.context.findMealByDate(this.state.date)
-      
-    }
-   
-  
-
-
-    renderMealOfDay(...x){
-  
-     let html = x.map((i, index) => { 
-      if(i !== undefined){
-        return(
-          <MealItem meal_name={i.meal_name} id ={i.id}key={index} mealNum={index}/> 
-          )
-        }
-        return null 
-      })
-      return html;
-    }
-
-
-
-    showBrowser = e =>{
+    componentDidMount(){ 
+      MealApiService.getUserMeals()
+      .then(meals => {
         this.setState({
-            isBrowsing:!this.state.isBrowsing,
-            viewingBookmarks:false,
-        })
-    }
-    showBookmarks = e =>{
-     
-      this.setState({
-        viewingBookmarks:!this.state.viewingBookmarks,
-        isBrowsing:false,
+          meals:meals
+        },()=> {
+         this.findMealByDate(this.state.date)
+          // this.context.findMealByDate(this.state.date)
+          // this.setState({
+          //   MOD:this.context.mealOfDay
+          // })
+        }
+        )
+        console.log(this.state)  
       })
+      .catch(error =>{
+        console.error({error})
+      })
+   
     }
+
+    findMealByDate=(day)=>{
+
+      if(this.state.meals.length !== null){
+        let MOD = []
+        let meals=this.state.meals
+    
+        MOD = meals.filter(i => {
+          return i.on_day !== null && i.on_day.startsWith(day)}) 
+        this.addToCalDay(MOD)
+      } else{
+        return console.log('here')
+      }
+    };
+    
+    addToCalDay = (...meals) =>{
+      
+      let modArray=this.state.MOD
+      for (let i of meals[0]){
+        modArray.push(i)
+      }
+      this.setState({
+          MOD: modArray//TO-DO change this so that it will accept an array of entries once the db gets big enough
+        })
+      }
+
+ 
 
 
     handleSubmit=(ev)=>{
         ev.preventDefault()
+
         const on_day = this.state.date
-      
         const {meal_name, ingredients} = ev.target
         const newMeal = {
           meal_name: meal_name.value,
@@ -71,22 +82,12 @@ export default class AddMealPage extends Component{
           bookmarked: false
         }
 
-
-        
-
-        
-        
-        MealApiService.postMeal({
-          meal_name: meal_name.value,
-          ingredients: ingredients.value,
-          on_day: on_day, 
-          bookmarked: false
-        })
+        MealApiService.postMeal(newMeal)
         .then(res =>{ 
-          console.log(res);   // why can't I send data back from the server if it is not a 204? trying to get mealId from newly posted meal
+          console.log(res);   
           this.context.addMeal(newMeal) 
-          // this.context.findMealByDate(this.state.date)
-          this.context.addToCalDay([newMeal])
+          // this.context.findMealByDate(this.state.date)----> filters meals for mealOfDay and calls addToCalDay
+          this.context.addToCalDay([newMeal]) //---> updates mealOfDay state on App component with newMeal
         this.setState({
           MOD:this.context.mealOfDay
         })
@@ -97,12 +98,39 @@ export default class AddMealPage extends Component{
       }
     
 
+renderMealOfDay(...x){
+  let html = x.map((i, index) => { 
+    if(i !== undefined){
+      return(
+        <MealItem meal_name={i.meal_name} id ={i.id}key={index} mealNum={index}/> 
+        )
+      }
+      return null 
+    })
+    return html;
+  }
+
+  showBrowser = e =>{
+      this.setState({
+          isBrowsing:!this.state.isBrowsing,
+          viewingBookmarks:false,
+      })
+  }
+
+  showBookmarks = e =>{
+  
+    this.setState({
+      viewingBookmarks:!this.state.viewingBookmarks,
+      isBrowsing:false,
+    })
+  }
+
    
 
     render(){
         const date =this.state.date
-        // const mealOfDay= this.state.MOD
-        const mealOfDay= this.context.mealOfDay
+        const mealOfDay= this.state.MOD
+        // const mealOfDay= this.context.mealOfDay
         
       
        

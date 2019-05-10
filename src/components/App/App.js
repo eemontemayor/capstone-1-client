@@ -11,9 +11,7 @@ import MealBrowserPage from '../../routes/MealBrowserPage';
 import MealPlannerPage from '../../routes/MealPlannerPage';
 import AddMealPage from '../../routes/AddMealPage';
 import ApiContext from "../../context/meals-context";
-import config from '../../config';
 import MealApiService from '../../services/meal-api-service';
-import TokenService from '../../services/token-service';
 import './App.css';
 
 
@@ -32,31 +30,16 @@ class App extends Component {
     return { hasError: true };
   }
   componentDidMount(){
-    Promise.all([
-      fetch(`${config.API_ENDPOINT}/meals`,{
-        method:'GET',
-        headers:{
-          'content-type':'application/json',
-          'authorization':`bearer ${TokenService.getAuthToken()}`,
-        },
+    MealApiService.getUserMeals()
+    .then(meals => {
+      this.setState({
+        meals:meals
       })
-    ])
-      .then(([mealsRes]) => {
-        if (!mealsRes.ok)
-          return mealsRes.json().then(e => Promise.reject(e))
-        return Promise.all([
-          mealsRes.json(),
-        ])
-      })
-      .then(([meals]) => { 
-        console.log([meals])
-        this.setState({ 
-          meals:meals 
-        })
-      })
-      .catch(error => {
-        console.error({ error })
-      })
+      console.log(this.state)  
+    })
+    .catch(error =>{
+      console.error({error})
+    })
   }
   
 
