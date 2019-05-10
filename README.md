@@ -8,7 +8,7 @@
 
 ### screenshots
 <div align="center">
-    <img src="/appPics/calendar.jpg" width="100px"></img> 
+    <img src="./appPics/calendar.jpg" width="100px"></img> 
 </div>
 
 
