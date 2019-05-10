@@ -195,9 +195,9 @@ renderMealOfDay(...x){
               <AddMealForm date={date} handleSubmit={this.handleSubmit}/>
               </div>
              <div className='alt-comp'> 
-            <button className='add_meal_btn'>
+            {/* <button className='add_meal_btn'>
               View Meal History
-            </button>
+            </button> */}
             <button className='add_meal_btn' onClick={this.showBookmarks}>
                 View Meal Bookmarks
             </button>
