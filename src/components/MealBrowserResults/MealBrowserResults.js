@@ -12,7 +12,7 @@ export default class MealBrowserResults extends Component{
             let image = i.recipe.image;
             let ingredients= i.recipe.ingredients;
          
-            return <ResultItem  date={date} meal_name={meal_name} key={index} image={image} ingredients={ingredients} />
+            return <ResultItem showMod={this.props.showMod} date={date} meal_name={meal_name} key={index} image={image} ingredients={ingredients} />
             })
         return(
             <div>

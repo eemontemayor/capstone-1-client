@@ -28,18 +28,11 @@ export default class AddMealPage extends Component{
           meals:meals
         },()=> {
          this.findMealByDate(this.state.date)
-          // this.context.findMealByDate(this.state.date)
-          // this.setState({
-          //   MOD:this.context.mealOfDay
-          // })
-        }
-        )
-        console.log(this.state)  
+        })
       })
       .catch(error =>{
         console.error({error})
       })
-   
     }
 
     findMealByDate=(day)=>{
@@ -67,42 +60,101 @@ export default class AddMealPage extends Component{
         })
       }
 
- 
 
 
-    handleSubmit=(ev)=>{
-        ev.preventDefault()
-
-        const on_day = this.state.date
-        const {meal_name, ingredients} = ev.target
-        const newMeal = {
-          meal_name: meal_name.value,
-          ingredients: ingredients.value,
-          on_day: on_day, 
-          bookmarked: false
-        }
-
-        MealApiService.postMeal(newMeal)
-        .then(res =>{ 
-          console.log(res);   
-          this.context.addMeal(newMeal) 
-          // this.context.findMealByDate(this.state.date)----> filters meals for mealOfDay and calls addToCalDay
-          this.context.addToCalDay([newMeal]) //---> updates mealOfDay state on App component with newMeal
+      
+ clearAndSetMOD=(newMeal,date)=>{
+  MealApiService.postMeal(newMeal)
+  .then(res =>{ 
+    this.setState({
+      MOD:[]
+    })
+  console.log(res);   
+  MealApiService.getUserMeals() //hacky but will do for now
+    .then(meals => {
         this.setState({
-          MOD:this.context.mealOfDay
+            meals:meals
+        },()=> {
+        this.findMealByDate(date)
+        })
+    })
+    .catch(error =>{
+      console.error({error})
+    })
+  })
+.catch(error => {
+console.log({error})
+})
+ }
+
+
+
+
+
+handleSubmit=(ev)=>{
+    ev.preventDefault()
+
+    const on_day = this.state.date
+    const {meal_name, ingredients} = ev.target
+    const newMeal = {
+      meal_name: meal_name.value,
+      ingredients: ingredients.value,
+      on_day: on_day, 
+      bookmarked: false
+    }
+
+    MealApiService.postMeal(newMeal)
+      .then(res =>{ 
+        this.setState({
+          MOD:[]
+        })
+      console.log(res);   
+      MealApiService.getUserMeals() //hacky but will do for now
+        .then(meals => {
+            this.setState({
+                meals:meals
+            },()=> {
+            this.findMealByDate(this.state.date)
+            })
+        })
+        .catch(error =>{
+          console.error({error})
         })
       })
-      .catch(error => {
-        console.log({error})
-        })
-      }
+  .catch(error => {
+    console.log({error})
+    })
+}
     
+  deleteMeal=(meal, mealNum)=>{
+    let newMOD = this.state.MOD
+    if(meal.id === undefined){
+      delete newMOD[mealNum]
+      this.setState({
+        MOD:newMOD             
+      })
+    } else{ 
+        console.log(meal)
+        MealApiService.deleteMeal(meal)
+          .then(res =>{
+            console.log(res)
+            delete newMOD[mealNum]
+            this.setState({
+              MOD:newMOD
+            })
+          })
+      }
+  }
+
+
+
+
 
 renderMealOfDay(...x){
   let html = x.map((i, index) => { 
     if(i !== undefined){
       return(
-        <MealItem meal_name={i.meal_name} id ={i.id}key={index} mealNum={index}/> 
+        <MealItem meal_name={i.meal_name} onDelete={this.deleteMeal} id ={i.id}key={index} mealNum={index}/> 
         )
       }
       return null 
@@ -152,7 +204,7 @@ renderMealOfDay(...x){
             <button className='add_meal_btn' onClick={this.showBrowser}>
                 Browse Meal for Ideas
             </button><br/>
-            {this.state.isBrowsing && <MealBrowserForm date={date}  />} 
+            {this.state.isBrowsing && <MealBrowserForm showMod={this.clearAndSetMOD}date={date}   />} 
             {this.state.viewingBookmarks && <Bookmarks date={date}/>}
            </div>
            </div> 

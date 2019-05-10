@@ -43,18 +43,18 @@ export default class ResultItem extends Component{
           on_day: date,
           bookmarked:false
         }
-        
-        MealApiService.postMeal({
-          meal_name: meal_name,
-          image: image,
-          ingredients: formattedIngredients, 
-          on_day: date,
-          bookmarked:false
-          
-        })//get response from back end and add those to the functions below
+        this.props.showMod(newMeal, this.props.date)
+       
+        // MealApiService.postMeal({
+        //   meal_name: meal_name,
+        //   image: image,
+        //   ingredients: formattedIngredients, 
+        //   on_day: date,
+        //   bookmarked:false
+        // })//get response from back end and add those to the functions below
         
         this.context.addMeal(newMeal)
-        this.context.addToCalDay([newMeal])
+        
       }
 
 

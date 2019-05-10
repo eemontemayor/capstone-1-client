@@ -29,6 +29,9 @@ class App extends Component {
     console.error(error);
     return { hasError: true };
   }
+
+
+
   componentDidMount(){
     MealApiService.getUserMeals()
     .then(meals => {
@@ -51,36 +54,6 @@ class App extends Component {
     });
   }
 
-  deleteMeal=(meal, mealNum)=>{
-    let newMOD = this.state.mealOfDay
-
-    if(meal.id === undefined){
-      
-      delete newMOD[mealNum]
-      this.setState({
-        mealOfDay:newMOD // since it never gets deleted from db, this item will actually re-render after refresh
-                            //and i can delete it then.... not working...
-      })
-    } else{
-
-    
-    console.log(meal)
-
-
-    MealApiService.deleteMeal(meal)
-    .then(res =>{
-      console.log(res)
-      delete newMOD[mealNum]
-      this.setState({
-        mealOfDay:newMOD
-      })
-    })
-    
-    
-
-   
-  }
-  }
 
 
 
@@ -109,7 +82,7 @@ class App extends Component {
 };
 
 
-findMealByDate=(day)=>{
+findMealByDate=(day)=>{ // delete these here and pass them down to browser form as props from addMealPage
 
   if(this.state.meals.length !== null){
     let MOD = []
@@ -130,7 +103,7 @@ addToCalDay = (...meals) =>{
     modArray.push(i)
   }
   this.setState({
-      mealOfDay: modArray//TO-DO change this so that it will accept an array of entries once the db gets big enough
+      mealOfDay: modArray
     })
   }
 

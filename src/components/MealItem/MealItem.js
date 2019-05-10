@@ -10,7 +10,7 @@ export default class MealItem extends Component{
     render(){
         const meal_name =this.props.meal_name
         const mealId = this.props.id
-        const deleteMeal= this.context.deleteMeal
+        const deleteMeal= this.props.onDelete
         const mealNum = this.props.mealNum
         
         const meal={
