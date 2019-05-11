@@ -204,7 +204,7 @@ renderMealOfDay(...x){
             <button className='add_meal_btn' onClick={this.showBrowser}>
                 Browse Meal for Ideas
             </button><br/>
-            {this.state.isBrowsing && <MealBrowserForm showMod={this.clearAndSetMOD}date={date}   />} 
+            {this.state.isBrowsing && <MealBrowserForm showMod={this.clearAndSetMOD} date={date}   />} 
             {this.state.viewingBookmarks && <Bookmarks date={date}/>}
            </div>
            </div> 

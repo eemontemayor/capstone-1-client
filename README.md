@@ -49,6 +49,8 @@
 ### future improvements
 User will be able to view their meal history when adding a meal.
 User will be able to see their meals of the day when hovering over a calendar day.
+User will be able to search by either dish-type or cuisine type when using MealBrowser Component
+User will be able to add a meal to a day when viewing their bookmarks from the add-Meal page
 
 
 
