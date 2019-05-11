@@ -4,6 +4,15 @@
     https://eemontemayor-meal-planner-app.now.sh/
 
 ### API documentation
+    
+    GET /meals    
+    GET /meals/:date
+
+    POST /meals
+    POST /meals/:date
+
+    DELETE /meals/:date
+
 
 
 ### screenshots
@@ -29,7 +38,9 @@
 
 
 
-### features to be added
+### future improvements
+User will be able to view their meal history when adding a meal.
+User will be able to see their meals of the day when hovering over a calendar day.
 
 
 
