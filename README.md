@@ -6,13 +6,21 @@
 ### API documentation
     
     GET /meals    
+            get all user meals
+
     GET /meals/:date
+            get all user meals for particular day
+
 
     POST /meals
+            Post a meal as a saved bookmark
+
     POST /meals/:date
+            Post a meal for a particular day
+
 
     DELETE /meals/:date
-
+            Delete meal for a particular day
 
 
 ### screenshots
