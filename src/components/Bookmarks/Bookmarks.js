@@ -1,11 +1,33 @@
 import React, {Component} from 'react';
 import ApiContext from '../../context/meals-context';
+import MealApiService from '../../services/meal-api-service';
+
+
 export default class Bookmarks extends Component{
+    state={
+        meals:[],
+    }    
     static contextType = ApiContext
+
+
+    componentDidMount(){
+        MealApiService.getUserMeals()
+      .then(meals => {
+        this.setState({
+          meals:meals
+        })
+        console.log(this.state)  
+      })
+      .catch(error =>{
+        console.error({error})
+      })
+    }
+
+
 
     getBookmarks=()=>{
         let bookmarks = []
-        let meals = this.context.meals
+        let meals = this.state.meals
    
         bookmarks.push(meals.filter(i => i.on_day === null))
         
