@@ -1,7 +1,7 @@
 ## THE MEAL DEAL
 
 ### link 
-    https://eemontemayor-meal-planner-app.now.sh/
+<a href="https://eemontemayor-meal-planner-app.now.sh/">live link </a>
 
 
 ###
@@ -46,13 +46,16 @@ Click on the Planner to open up your calendar then click on a day to add either 
 
 
 ### summary
-    This is a meal planner app.
-    The user can browse/search for meals on the 'edamam' website 
-        and bookmark those meals for later.
-    The user can open up their calendar and click on a day.
-    After clicking on a day, the user can either add their own 
-        meals to that day or browse meals from 'edamam' and add the
-             meal to that particular day.
+This is a meal planner app.
+    
+The user can browse/search for meals on the 'edamam' website 
+and bookmark those meals for later.
+
+The user can open up their calendar and click on a day.
+
+After clicking on a day, the user can either add their own 
+meals to that day or browse meals from 'edamam' and add the
+meal to that particular day.
 
 
 
@@ -66,5 +69,5 @@ User will be able to add a meal to a day when viewing their bookmarks from the a
 
 
 ### technologies
-    This app utilizes HTML, CSS, React, Node, Express, and PostgreSQL
-       <a href="https://developer.edamam.com/edamam-docs-recipe-api"> API used: Edamam Recipe Search API </a>
+This app utilizes HTML, CSS, React, Node, Express, and PostgreSQL
+<a href="https://developer.edamam.com/edamam-docs-recipe-api"> API used: Edamam Recipe Search API </a>
