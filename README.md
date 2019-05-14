@@ -3,6 +3,16 @@
 ### link 
     https://eemontemayor-meal-planner-app.now.sh/
 
+
+###
+
+You can make your own account by registering OR log in with user name "Socrates" and password "q1Q!socrates"
+          
+Click on the Browser to search for delicious meals and add them to your bookmarks
+         
+Click on the Planner to open up your calendar then click on a day to add either your own meals OR from the browser
+        
+
 ### API documentation
     
     GET /meals    

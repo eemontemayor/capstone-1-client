@@ -33,17 +33,22 @@ class App extends Component {
 
 
   componentDidMount(){
-    MealApiService.getUserMeals()
-    .then(meals => {
-      this.setState({
-        meals:meals
+
+   if( this.state.isLoggedIn){
+    
+      MealApiService.getUserMeals()
+      .then(meals => {
+        this.setState({
+          meals:meals
+        })
+        console.log(this.state)  
       })
-      console.log(this.state)  
-    })
-    .catch(error =>{
-      console.error({error})
-    })
+      .catch(error =>{
+        console.error({error})
+      })
+    }
   }
+
   
 
  
