@@ -34,11 +34,11 @@ export default class Bookmarks extends Component{
          return bookmarks
     }
     renderBookmarks=(x)=>{
-        console.log(x[0])
+        
         let array = x[0].map((item, index)=>{
-            return <div date={this.props.date} meal_name={item.meal_name} key={index} image={item.image} ingredients={item.ingredients[0]}>{item.meal_name}</div>
+            return <div className='bookmarks-item' date={this.props.date} meal_name={item.meal_name} key={index} image={item.image} ingredients={item.ingredients[0]}>{item.meal_name}</div>
         })
-        console.log('here')
+       
         return array
     }
 
