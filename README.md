@@ -6,7 +6,7 @@
 
 ###
 
-You can make your own account by registering OR log in with user name "Socrates" and password "q1Q!socrates"
+You can make your own account by registering OR log in with user name "Demo" and password "q1Q!demopw"
           
 Click on the Browser to search for delicious meals and add them to your bookmarks
          
@@ -67,3 +67,4 @@ User will be able to add a meal to a day when viewing their bookmarks from the a
 
 ### technologies
     This app utilizes HTML, CSS, React, Node, Express, and PostgreSQL
+       <a href="https://developer.edamam.com/edamam-docs-recipe-api"> API used: Edamam Recipe Search API </a>

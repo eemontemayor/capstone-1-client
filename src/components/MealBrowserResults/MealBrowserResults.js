@@ -6,7 +6,7 @@ export default class MealBrowserResults extends Component{
     renderResults(...x){
         let date = this.props.date; // can I conditionally add this prop? this is only for the case that mealBrowser is accessed through Calendar Comp
         
-        console.log(date)
+        
         let results= x[0].map((i, index) => { // use map to make an array of components <resultItem/>
             let meal_name = i.recipe.label;
             let image = i.recipe.image;
