@@ -18,7 +18,7 @@ export default class ResultItem extends Component{
         for (let i=0; i<ingredients.length; i++){
          formattedIngredients.push(ingredients[i].text) 
         }
-        console.log(ingredients)
+        
       MealApiService.postMeal({
         meal_name: meal_name,
         image: image,

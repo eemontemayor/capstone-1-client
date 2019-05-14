@@ -21,7 +21,7 @@ const handleSubmit=(ev)=>{
         this.setState({
           MOD:[]
         })
-      console.log(res);   
+    
       MealApiService.getUserMeals() //hacky but will do for now
         .then(meals => {
             this.setState({

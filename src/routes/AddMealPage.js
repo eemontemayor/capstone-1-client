@@ -135,7 +135,7 @@ handleSubmit=(ev)=>{
         MOD:newMOD             
       })
     } else{ 
-        console.log(meal)
+       
         MealApiService.deleteMeal(meal)
           .then(res =>{
            
