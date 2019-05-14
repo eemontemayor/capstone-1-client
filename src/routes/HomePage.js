@@ -19,8 +19,8 @@ export default class HomePage extends Component {
         return (
             <div>
             <div className='home-page-div'>
-            
-                <Link to='/mealBrowser' className='home-btn-browser' >EXPLORE NEW MEALS</Link><br/>    
+
+                <Link to='/mealBrowser' className='home-btn-browser' >BROWSE NEW MEALS</Link><br/>    
                   
                 <Link to='/mealPlanner'  className='home-btn-planner' >PLAN YOUR MEALS</Link>
             </div>
