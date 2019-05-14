@@ -16,7 +16,22 @@ header{
     margin-bottom:80px;
    
 }
-
+.back-btn{
+    cursor: pointer;
+    background-color: rgb(243, 114, 114);;
+    border-radius: 30px;
+    border: 0;
+    color: black;
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    height: 60px;
+    padding: 8px;
+    text-align: center;
+    text-decoration: none;
+    width: 60px;
+    margin:4px;
+}
 .add_meal_form{
     margin-top:20px;
     margin-left:10px;

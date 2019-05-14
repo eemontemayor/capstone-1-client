@@ -16,7 +16,7 @@ export default class Bookmarks extends Component{
         this.setState({
           meals:meals
         })
-        console.log(this.state)  
+       
       })
       .catch(error =>{
         console.error({error})

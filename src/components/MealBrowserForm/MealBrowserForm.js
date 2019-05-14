@@ -74,7 +74,7 @@ handleSubmit = e => {
                 <Input
                 name="cuisineType"
                 id="BrowserForm_cuisine_search"
-                placeholder="Mexican"
+                placeholder="e.g. Mexican"
                 >
                 </Input>
               </div>

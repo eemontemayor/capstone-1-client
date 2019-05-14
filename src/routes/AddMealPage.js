@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
 import AddMealForm from '../components/AddMealForm/AddMealForm';
 import MealBrowserForm from '../components/MealBrowserForm/MealBrowserForm';
 import MealApiService from '../services/meal-api-service';
@@ -137,7 +138,7 @@ handleSubmit=(ev)=>{
         console.log(meal)
         MealApiService.deleteMeal(meal)
           .then(res =>{
-            console.log(res)
+           
             delete newMOD[mealNum]
             this.setState({
               MOD:newMOD
@@ -188,7 +189,9 @@ renderMealOfDay(...x){
        
       
         return(
+  
         <div className='add-meal-form'>
+           <Link to='/mealPlanner' ><button className='back-btn'>Back</button></Link>
           { this.renderMealOfDay(...mealOfDay)} 
           
             <div className='add_meal_form'>
@@ -208,6 +211,7 @@ renderMealOfDay(...x){
             {this.state.viewingBookmarks && <Bookmarks date={date}/>}
            </div>
            </div> 
+           
         )
     }
 }
