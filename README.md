@@ -71,4 +71,4 @@ User will be able to add a meal to a day when viewing their bookmarks from the a
 ### technologies
 This app utilizes HTML, CSS, React, Node, Express, and PostgreSQL
 
-<a href="https://developer.edamam.com/edamam-docs-recipe-api"> API used: Edamam Recipe Search API </a>
+API used:<a href="https://developer.edamam.com/edamam-docs-recipe-api">  Edamam Recipe Search API </a>
