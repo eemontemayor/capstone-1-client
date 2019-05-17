@@ -10,8 +10,6 @@ export default class LoginForm extends Component {
 
   state = { error: null }
 
-  
-
   handleSubmitJwtAuth = ev => {
        ev.preventDefault()
        this.setState({ error: null })

@@ -16,6 +16,13 @@ header{
     margin-bottom:80px;
    
 }
+.home-page-instructions{
+    color: black;
+    background-color: rgb(116, 203, 108);;
+    padding:15px;
+   
+    margin-bottom:30px;
+}
 .back-btn{
     cursor: pointer;
     background-color: rgb(243, 114, 114);;

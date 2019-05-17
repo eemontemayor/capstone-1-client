@@ -14,7 +14,6 @@ import ApiContext from "../../context/meals-context";
 import MealApiService from '../../services/meal-api-service';
 import './App.css';
 
-
 class App extends Component {
   state = { 
     hasError: false,
@@ -148,6 +147,7 @@ render() {
           <Header />
         </header>
         <main className='App__main'>
+       
           {this.state.hasError && <p className='red'>There was an error! Oh no!</p>}
           <Switch>
             <Route
