@@ -9,7 +9,7 @@ header{
     bottom: 0;
     right: 0;
     overflow: auto;
-    background: rgba(147, 95, 243, 0.575);
+    background-image:url('../../images/wheat.png');
 }
 .App__main{
     background:white;
@@ -18,10 +18,11 @@ header{
 }
 .home-page-instructions{
     color: black;
-    background-color: rgb(116, 203, 108);;
+    background-color: rgba(189, 163, 15, 0.979);;
     padding:15px;
-   
+   color:rgb(255, 255, 255);
     margin-bottom:30px;
+    font-weight: 800;
 }
 .back-btn{
     cursor: pointer;
@@ -127,7 +128,7 @@ header{
 
 .home-page-div{
     padding:100px;
-   background-color: rgba(0, 255, 255, 0.767);
+   background-color: rgb(218, 181, 14);
    display:block;
 }
 
