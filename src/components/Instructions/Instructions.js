@@ -11,7 +11,7 @@ export default function Instructions(){
         </p>
         </section>
         <section className='credentials'>
-        <p> You can register your own account or log in with <br/>User Name : Demo <br/> 
+        <p> You can register your own account or log in with <br/>User Name : demo <br/> 
         Password : Demopassword1!</p>
         </section>
         </div>
