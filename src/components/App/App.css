@@ -150,6 +150,22 @@ header{
 }
 
 @media screen and (max-width: 490px) {
+
+    .home-page-div {
+        padding: 20px;
+      
+    }
+    
+
+    .home-page-instructions{
+        color: black;
+        background-color: rgba(189, 163, 15, 0.979);;
+        padding:15px;
+       color:rgb(255, 255, 255);
+       width:100%;
+        font-weight: 800;
+    }
+
 .home-btn-browser{
 
     padding: 20px;
