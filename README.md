@@ -6,7 +6,7 @@
 
 ###
 
-You can make your own account by registering OR log in with user name "Demo" and password "Demopassword1!"
+You can make your own account by registering OR log in with user name "demo" and password "Demopassword1!"
           
 Click on the Browser to search for delicious meals and add them to your bookmarks
          
