@@ -40,7 +40,7 @@ handleSubmit = e => {
     render(){
       const date = this.props.date
       const {searchResults} = this.state
-     
+      
         return(
             <div className='browser_form'>
             <form onSubmit={this.handleSubmit}
@@ -74,7 +74,7 @@ handleSubmit = e => {
                 <Input
                 name="cuisineType"
                 id="BrowserForm_cuisine_search"
-                placeholder="Mexican"
+                placeholder="e.g. Mexican"
                 >
                 </Input>
               </div>
@@ -83,7 +83,7 @@ handleSubmit = e => {
             </Button>
           </form>
           
-            <MealBrowserResults results={searchResults} date={date} />
+            <MealBrowserResults showMod={this.props.showMod}results={searchResults} date={date} />
           
         
             </div>

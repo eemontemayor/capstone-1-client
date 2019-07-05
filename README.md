@@ -1,68 +1,74 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## THE MEAL DEAL
 
-## Available Scripts
+### link 
+<a href="https://eemontemayor-meal-planner-app.now.sh/">live link </a>
 
-In the project directory, you can run:
 
-### `npm start`
+###
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+You can make your own account by registering OR log in with user name "Demo" and password "Demopassword1!"
+          
+Click on the Browser to search for delicious meals and add them to your bookmarks
+         
+Click on the Planner to open up your calendar then click on a day to add either your own meals OR from the browser
+        
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### API documentation
+    
+    GET /meals    
+            get all user meals
 
-### `npm test`
+    GET /meals/:date
+            get all user meals for particular day
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+    POST /meals
+            Post a meal as a saved bookmark
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    POST /meals/:date
+            Post a meal for a particular day
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    DELETE /meals/:date
+            Delete meal for a particular day
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### screenshots
+<div align='center'>
+    <img src="./appPics/calendar.png" width="400px"/> 
+</div>
+<div align='center'>
+    <img src="./appPics/browseMeals.png" width="400px"/> 
+</div>
+<div align='center'>
+    <img src="./appPics/addMeal.png" width="400px"/> 
+</div>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### summary
+This is a meal planner app.
+    
+The user can browse/search for meals on the 'edamam' website 
+and bookmark those meals for later.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+The user can open up their calendar and click on a day.
 
-## Learn More
+After clicking on a day, the user can either add their own 
+meals to that day or browse meals from 'edamam' and add the
+meal to that particular day.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+### future improvements
+User will be able to view their meal history when adding a meal.
+User will be able to see their meals of the day when hovering over a calendar day.
+User will be able to search by either dish-type or cuisine type when using MealBrowser Component
+User will be able to add a meal to a day when viewing their bookmarks from the add-Meal page
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-### Analyzing the Bundle Size
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-### Making a Progressive Web App
+### technologies
+This app utilizes HTML, CSS, React, Node, Express, and PostgreSQL
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+API used:<a href="https://developer.edamam.com/edamam-docs-recipe-api">  Edamam Recipe Search API </a>

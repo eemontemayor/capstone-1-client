@@ -1,16 +1,20 @@
 .meal-item{
     
-        border: .5px #000000 solid;
-        border-radius: 15px;
-       padding: 7px;
-       margin: auto;
-        background-color: aliceblue;
-        margin-bottom: 3px;
-        width:60%;
-        margin-top: 10px;
-        font-weight: 700;
+    border: .5px #000000 solid;
+    border-radius: 15px;
+    padding: 7px;
+    margin: auto;
+    background-color: aliceblue;
+    margin-bottom: 3px;
+    width:60%;
+    margin-top: 10px;
+    font-weight: 700;
         
 }
 .delete-btn{
     float:right;
+    background-color: rgb(255, 103, 103);
+    color: white;
+    border: .5px #000000 solid;
+    border-radius: 15px;
 }

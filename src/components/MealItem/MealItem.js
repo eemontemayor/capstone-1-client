@@ -10,14 +10,14 @@ export default class MealItem extends Component{
     render(){
         const meal_name =this.props.meal_name
         const mealId = this.props.id
-        const deleteMeal= this.context.deleteMeal
+        const deleteMeal= this.props.onDelete
         const mealNum = this.props.mealNum
         
         const meal={
             meal_name: this.props.meal_name,
             id: this.props.id,
         }
-        console.log(meal)
+     
 
         return(
             <div className='meal-item' id={mealId}>

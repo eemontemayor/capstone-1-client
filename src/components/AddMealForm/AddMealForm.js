@@ -25,6 +25,7 @@ class AddMealForm extends Component{
       const{  handleChange } = this.context
       
         return(
+          <div>
             <form
             className='AddMealForm' onSubmit={handleSubmit.bind(this)}>   
             <div>{date}</div>        
@@ -67,6 +68,7 @@ class AddMealForm extends Component{
               Add Meal
             </Button>
           </form>
+          </div>  
         )
     }
 }

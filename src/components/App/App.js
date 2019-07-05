@@ -11,11 +11,8 @@ import MealBrowserPage from '../../routes/MealBrowserPage';
 import MealPlannerPage from '../../routes/MealPlannerPage';
 import AddMealPage from '../../routes/AddMealPage';
 import ApiContext from "../../context/meals-context";
-import config from '../../config';
 import MealApiService from '../../services/meal-api-service';
-import TokenService from '../../services/token-service';
 import './App.css';
-
 
 class App extends Component {
   state = { 
@@ -31,33 +28,26 @@ class App extends Component {
     console.error(error);
     return { hasError: true };
   }
+
+
+
   componentDidMount(){
-    Promise.all([
-      fetch(`${config.API_ENDPOINT}/meals`,{
-        method:'GET',
-        headers:{
-          'content-type':'application/json',
-          'authorization':`bearer ${TokenService.getAuthToken()}`,
-        },
-      })
-    ])
-      .then(([mealsRes]) => {
-        if (!mealsRes.ok)
-          return mealsRes.json().then(e => Promise.reject(e))
-        return Promise.all([
-          mealsRes.json(),
-        ])
-      })
-      .then(([meals]) => { 
-        console.log([meals])
-        this.setState({ 
-          meals:meals 
+
+   if( this.state.isLoggedIn){
+    
+      MealApiService.getUserMeals()
+      .then(meals => {
+        this.setState({
+          meals:meals
         })
+          
       })
-      .catch(error => {
-        console.error({ error })
+      .catch(error =>{
+        console.error({error})
       })
+    }
   }
+
   
 
  
@@ -68,36 +58,6 @@ class App extends Component {
     });
   }
 
-  deleteMeal=(meal, mealNum)=>{
-    let newMOD = this.state.mealOfDay
-
-    if(meal.id === undefined){
-      
-      delete newMOD[mealNum]
-      this.setState({
-        mealOfDay:newMOD // since it never gets deleted from db, this item will actually re-render after refresh
-                            //and i can delete it then.... not working...
-      })
-    } else{
-
-    
-    console.log(meal)
-
-
-    MealApiService.deleteMeal(meal)
-    .then(res =>{
-      console.log(res)
-      delete newMOD[mealNum]
-      this.setState({
-        mealOfDay:newMOD
-      })
-    })
-    
-    
-
-   
-  }
-  }
 
 
 
@@ -126,7 +86,7 @@ class App extends Component {
 };
 
 
-findMealByDate=(day)=>{
+findMealByDate=(day)=>{ // delete these here and pass them down to browser form as props from addMealPage
 
   if(this.state.meals.length !== null){
     let MOD = []
@@ -147,7 +107,7 @@ addToCalDay = (...meals) =>{
     modArray.push(i)
   }
   this.setState({
-      mealOfDay: modArray//TO-DO change this so that it will accept an array of entries once the db gets big enough
+      mealOfDay: modArray
     })
   }
 
@@ -187,6 +147,7 @@ render() {
           <Header />
         </header>
         <main className='App__main'>
+       
           {this.state.hasError && <p className='red'>There was an error! Oh no!</p>}
           <Switch>
             <Route

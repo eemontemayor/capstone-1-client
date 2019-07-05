@@ -18,7 +18,7 @@ export default class ResultItem extends Component{
         for (let i=0; i<ingredients.length; i++){
          formattedIngredients.push(ingredients[i].text) 
         }
-        console.log(ingredients)
+        
       MealApiService.postMeal({
         meal_name: meal_name,
         image: image,
@@ -43,18 +43,18 @@ export default class ResultItem extends Component{
           on_day: date,
           bookmarked:false
         }
-        
-        MealApiService.postMeal({
-          meal_name: meal_name,
-          image: image,
-          ingredients: formattedIngredients, 
-          on_day: date,
-          bookmarked:false
-          
-        })//get response from back end and add those to the functions below
+        this.props.showMod(newMeal, this.props.date)
+       
+        // MealApiService.postMeal({
+        //   meal_name: meal_name,
+        //   image: image,
+        //   ingredients: formattedIngredients, 
+        //   on_day: date,
+        //   bookmarked:false
+        // })//get response from back end and add those to the functions below
         
         this.context.addMeal(newMeal)
-        this.context.addToCalDay([newMeal])
+        
       }
 
 
@@ -82,11 +82,11 @@ export default class ResultItem extends Component{
         <div className='result-item'>
         <h4 className='result-item-name'>{this.props.meal_name}</h4>
        <div className='result-item-btn'>{date && <button className='result-item-cal-btn'onClick={this.addToCalendar.bind(this)}>Add Meal to this day</button>}
-        <button type="submit" onClick={this.handleBookmarkSubmit.bind(this)}>Save to my bookmarks</button><br/>
+        <button className='result-item-book-btn' type="submit" onClick={this.handleBookmarkSubmit.bind(this)}>Save to my bookmarks</button><br/>
         </div>
         <img className='result-item-image' src={this.props.image} alt='x'/><br/>
         
-        <div className={this.state.hidden ? 'hidden':null} onClick={this.toggleClass.bind(this)}><button>Hide Ingredients</button><br/>{ingredients}</div> 
+        <div className={this.state.hidden ? 'result-item-ingredients hidden':'result-item-ingredients'} onClick={this.toggleClass.bind(this)}><button className='result-item-ingredients-btn'>Hide Ingredients</button><br/>{ingredients}</div> 
         </div>
     )
 

@@ -16,7 +16,7 @@ const AuthApiService = {
           )
       },
       postUser(user){ //method for posting new users ~protected endpoint
-        console.log(user)
+       
         return fetch(`${config.API_ENDPOINT}/users`, {
           method: 'POST',
           headers: {

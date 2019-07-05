@@ -1,9 +1,9 @@
-// import config from '../config';
+import config from '../config';
 import TokenService from '../services/token-service';
 
 const MealApiService = {
-    getBrowserMeals(x) {
-      return fetch(`https://api.edamam.com/search?q=${x}&app_id=108438ee&app_key=9fa106c05de3b6d9c71df9aecbab94e6`, { 
+  getBrowserMeals(x) {
+      return fetch(`https://api.edamam.com/search?q=${x}&app_id=${config.APP_ID}&app_key=${config.API_KEY}`, { 
       
       })
         .then(res =>
@@ -13,10 +13,28 @@ const MealApiService = {
         );
     },
 
+  getUserMeals(){
+    return fetch(`${config.API_ENDPOINT}/meals`,{
+        method:'GET',
+        headers:{
+          'content-type':'application/json',
+          'authorization':`bearer ${TokenService.getAuthToken()}`,
+        },
+      })
+      .then((mealsRes) => {
+        if (!mealsRes.ok)
+          return mealsRes.json().then(e => Promise.reject(e))
+        return mealsRes.json()
+      })
+      .catch(error => {
+        console.error({error})
+      })
+   
+    },
 
 
     postMeal(x){
-      return fetch('http://localhost:8000/api/meals',{ //TO-DO hide these endpoints in config/env files
+      return fetch(`${config.API_ENDPOINT}/meals`,{ //TO-DO hide these endpoints in config/env files
         method: 'POST',
         headers:{
           'content-type':'application/json',
@@ -26,7 +44,7 @@ const MealApiService = {
 
       })
       .then(res => { 
-        console.log(res);
+      
         (!res.ok)
           ? res.json().then(e => Promise.reject(e))
           : res.json().then(r => Promise.resolve(r))
@@ -40,7 +58,7 @@ const MealApiService = {
 
 
     deleteMeal(meal){
-      return fetch('http://localhost:8000/api/meals', { 
+      return fetch(`${config.API_ENDPOINT}/meals`, { 
         method: 'DELETE',
         headers:{
           'content-type':'application/json',
